@@ -1,22 +1,31 @@
 import { NavigationContainer } from '@react-navigation/native'
 import * as Linking from 'expo-linking'
-import { useMemo } from 'react'
+import { PDDarkTheme, PDLightTheme } from 'ui/src/theme'
+import { useMemo, useCallback } from 'react'
+import { useColorScheme } from 'react-native'
 
 export function NavigationProvider({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const scheme = useColorScheme()
+  
+  const onReadyCallback = useCallback(() => {
+  }, [])
+  
   return (
     <NavigationContainer
+      onReady={onReadyCallback}
+      theme={scheme === 'dark' ? PDDarkTheme : PDLightTheme}
       linking={useMemo(
         () => ({
           prefixes: [Linking.createURL('/')],
           config: {
-            initialRouteName: 'home',
+            initialRouteName: 'Tab',
             screens: {
-              home: '',
-              'user-detail': 'users/:id',
+              Tab: '',
+              // Add your screen routing here when needed
             },
           },
         }),

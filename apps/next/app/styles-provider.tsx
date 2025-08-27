@@ -1,6 +1,7 @@
 'use client'
 import { useServerInsertedHTML } from 'next/navigation'
 import { StyleSheet } from 'react-native'
+import { Provider } from 'app/provider'
 
 export function StylesProvider({ children }: { children: React.ReactNode }) {
   useServerInsertedHTML(() => {
@@ -13,5 +14,10 @@ export function StylesProvider({ children }: { children: React.ReactNode }) {
       />
     )
   })
-  return <>{children}</>
+  
+  return (
+    <Provider loading={<div>Loading...</div>}>
+      {children}
+    </Provider>
+  )
 }

@@ -21,7 +21,12 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "app/*": ["../../packages/app/*"]
+      "app/*": ["../../packages/app/*"],
+      "navigation/*": ["../../packages/navigation/*"],
+      "state/*": ["../../packages/state/*"],
+      "ui/*": ["../../packages/ui/*"],
+      "utils/*": ["../../packages/utils/*"],
+      "firebase-config/*": ["../../packages/firebase/*"]
     }
   },
   "include": [
