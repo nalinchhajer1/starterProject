@@ -4,7 +4,10 @@
     "slug": "solito-blank",
     "version": "1.0.0",
     "scheme": "solito-blank",
-    "platforms": ["ios", "android"],
+    "platforms": [
+      "ios",
+      "android"
+    ],
     "ios": {
       "bundleIdentifier": "com.solito.blank"
     },
@@ -12,6 +15,9 @@
     "experiments": {
       "reactCanary": true,
       "reactCompiler": true
+    },
+    "android": {
+      "package": "com.solito.blank"
     }
   }
 }

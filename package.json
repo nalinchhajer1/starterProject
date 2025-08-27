@@ -8,12 +8,15 @@
   "devDependencies": {
     "@types/react": "^18.2.21",
     "eslint": "^8.21.0",
+    "expo": "^53.0.0",
     "turbo": "^2.4.4",
     "typescript": "^5.2.2"
   },
   "scripts": {
     "native": "cd apps/expo && yarn start",
-    "web": "cd apps/next && yarn next"
+    "web": "cd apps/next && yarn next",
+    "android": "cd apps/expo && yarn android",
+    "ios": "cd apps/expo && yarn ios"
   },
   "packageManager": "yarn@4.9.4",
   "eslintConfig": {
