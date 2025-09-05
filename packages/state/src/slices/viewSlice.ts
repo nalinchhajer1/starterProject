@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 import { APP_TYPE } from '../types/AppTypes'
 
 // Placeholder for getCurrentDateMoment - you'll replace this when copying your utils
@@ -45,5 +45,5 @@ const viewSlice = createSlice({
 })
 
 // No RTK slice actions exported since we're using traditional action creators
-export const {} = viewSlice.actions
+// export const {} = viewSlice.actions
 export default viewSlice.reducer

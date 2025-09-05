@@ -22,3 +22,5 @@ export const LanguageChangeManager = React.memo<{ language: string }>(({ languag
   console.log('setting language to', language)
   return null
 })
+
+LanguageChangeManager.displayName = 'LanguageChangeManager'

@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 import { APP_TYPE } from '../types/AppTypes'
 
 // Placeholder for DEFAULT_LANGUAGE - you'll replace this when copying your constants
@@ -61,5 +61,5 @@ const appSlice = createSlice({
 })
 
 // No RTK slice actions exported since we're using traditional action creators
-export const {} = appSlice.actions
+// export const {} = appSlice.actions
 export default appSlice.reducer

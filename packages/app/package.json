@@ -13,5 +13,12 @@
     "ui": "*",
     "utils": "*"
   },
+  "peerDependencies": {
+    "@types/react": "*",
+    "@types/react-native": "*",
+    "expo-linking": "*",
+    "react": "*",
+    "react-native": "*"
+  },
   "sideEffects": false
 }

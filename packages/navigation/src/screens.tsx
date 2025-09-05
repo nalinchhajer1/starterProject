@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { useContext, useMemo } from 'react'
-import { View, Text } from 'react-native'
 
 // Tab Navigation Implementation
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
@@ -10,9 +9,9 @@ import FontIcon from 'ui/src/FontIcon'
 import Strings, { LanguageContext } from 'utils/src/language'
 import { COLOR } from 'utils/src/colors'
 import { fontSize } from 'utils/src/font'
-import OtherView from './components/OtherView'
-import MonthView from './components/MonthView'
-import DayView from './components/DayView'
+import { OtherView } from './components/OtherView'
+import { MonthView } from './components/MonthView'
+import { DayView } from './components/DayView'
 
 const Tab = createBottomTabNavigator()
 
@@ -59,7 +58,6 @@ function createOptions(title: string, headerShown = false) {
 }
 
 export const TabNavigation = () => {
-  const language = useContext(LanguageContext)
   const [dayOption, monthOption, otherOption] = useMemo(() => {
     // Force re-computation when language changes by accessing Strings
     return [
@@ -67,7 +65,7 @@ export const TabNavigation = () => {
       createOptions(Strings.MONTH, false), 
       createOptions(Strings.OTHER, true),
     ]
-  }, [language])
+  }, [])
 
   return (
     <Tab.Navigator

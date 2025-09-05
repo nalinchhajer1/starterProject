@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useMemo } from 'react'
 import IcoMoon from 'react-icomoon'
-import { COLOR } from 'utils'
+import { COLOR } from 'utils/src/colors'
 
 // Import the icon set - we'll need to copy it to a TypeScript-friendly location
 const iconSet = require('../../../assets/fonts/selection.json')
