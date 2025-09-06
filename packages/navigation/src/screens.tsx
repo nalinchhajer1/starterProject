@@ -9,9 +9,9 @@ import FontIcon from 'ui/src/FontIcon';
 import Strings, { LanguageContext } from 'utils/src/language';
 import { COLOR } from 'utils/src/colors';
 import { fontSize } from 'utils/src/font';
-import { OtherView } from './components/OtherView';
-import { MonthView } from './components/MonthView';
-import { DayView } from './components/DayView';
+import { OtherView } from '../../features/feature-otherview/View/OtherView';
+import { MonthView } from '../../features/feature-monthview/View/MonthView';
+import { DayView } from '../../features/feature-dayview/View/DayView';
 
 const Tab = createBottomTabNavigator();
 

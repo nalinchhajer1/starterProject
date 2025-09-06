@@ -58,14 +58,14 @@ starterProject/
 - `provider/navigation/` - Navigation provider setup
 - `provider/safe-area/` - Safe area handling
 
-### 2. **`packages/navigation`** - Navigation & Screens
-**Purpose**: Application navigation structure and screen components
+### 2. **`packages/navigation`** - Navigation & Feature-Based Screens
+**Purpose**: Application navigation structure and feature-based screen components
 
 **Key Responsibilities**:
 - Navigation stack configuration
 - Screen definitions and routing
 - Tab navigation setup
-- Screen components (DayView, MonthView, etc.)
+- Feature-based screen components with Redux integration
 
 **Dependencies**:
 - `@react-navigation/stack` - Stack navigation
@@ -75,8 +75,29 @@ starterProject/
 **Key Files**:
 - `navigators.tsx` - Main navigation configuration
 - `screens.tsx` - Screen definitions
-- `components/` - Screen components
+- `features/` - Feature-based components with Redux
 - `types.ts` - Navigation type definitions
+
+**Feature Structure**:
+```
+features/
+├── feature-dayview/
+│   ├── View/           # DayView component and styles
+│   ├── redux/          # Day-specific Redux (Actions, Slices, Selectors, Types)
+│   └── README.md       # Feature requirements and documentation
+├── feature-monthview/
+│   ├── View/           # MonthView component and styles
+│   ├── redux/          # Month-specific Redux
+│   └── README.md       # Feature requirements
+├── feature-otherview/
+│   ├── View/           # OtherView component and styles
+│   ├── redux/          # Other-specific Redux
+│   └── README.md       # Feature requirements
+└── feature-loading/
+    ├── View/           # LoadingView component and styles
+    ├── redux/          # Loading-specific Redux
+    └── README.md       # Feature requirements
+```
 
 **Navigation Structure**:
 ```
@@ -269,12 +290,18 @@ yarn build     # Build all apps (via Turborepo)
 - Clear separation of concerns
 - Reusable across platforms
 
-### **3. Cross-Platform Compatibility**
+### **3. Feature-Based Component Architecture**
+- Each feature has its own folder with View and Redux subfolders
+- Consistent naming convention: `feature-[name]/View/` and `feature-[name]/redux/`
+- Redux files follow pattern: `[Feature]Actions.ts`, `[Feature]Slices.ts`, `[Feature]Selector.ts`, `[Feature]Types.ts`
+- Each feature includes comprehensive README.md with product requirements
+
+### **4. Cross-Platform Compatibility**
 - Solito for navigation compatibility
 - Platform-specific implementations when needed
 - Shared business logic and UI components
 
-### **4. State Management Pattern**
+### **5. State Management Pattern**
 - Redux Toolkit for state management
 - Redux Saga for side effects
 - Redux Persist for state persistence
@@ -320,15 +347,59 @@ Based on the navigation structure, this Jain Calendar app includes:
 - **Developer Info**: App developer, sponsors
 - **Localization**: English/Hindi support
 
+## 🔧 Adding New Features
+
+### **Feature Development Workflow**
+
+1. **Create Feature Structure**:
+   ```bash
+   mkdir -p packages/navigation/src/features/feature-[name]/View
+   mkdir -p packages/navigation/src/features/feature-[name]/redux
+   ```
+
+2. **Add View Components**:
+   - Create main component in `View/[FeatureName].tsx`
+   - Add styles in `View/[FeatureName].styles.ts`
+   - Export from `View/index.ts`
+
+3. **Add Redux Structure**:
+   - `redux/[Feature]Actions.ts` - Redux actions
+   - `redux/[Feature]Slices.ts` - Redux slice with reducers
+   - `redux/[Feature]Selector.ts` - Redux selectors
+   - `redux/[Feature]Types.ts` - TypeScript interfaces
+   - Export all from `redux/index.ts`
+
+4. **Add Documentation**:
+   - Create comprehensive `README.md` with product requirements
+   - Document all features, technical requirements, and integration points
+
+5. **Update Navigation**:
+   - Add to navigation types in `types.ts`
+   - Update navigation configuration in `navigators.tsx`
+   - Export from `features/index.ts`
+
+6. **Integration**:
+   - Update `components.tsx` to re-export new feature
+   - Add to main Redux store if needed
+   - Test on both mobile and web platforms
+
+### **Feature Naming Convention**
+- Feature folders: `feature-[name]` (e.g., `feature-dayview`)
+- Redux files: `[Feature][Type].ts` (e.g., `DayActions.ts`, `DaySlices.ts`)
+- Components: `[FeatureName].tsx` (e.g., `DayView.tsx`)
+- Styles: `[FeatureName].styles.ts` (e.g., `DayView.styles.ts`)
+
 ## 🔍 Key Benefits of This Architecture
 
 1. **Code Reusability**: Shared business logic across platforms
 2. **Type Safety**: Full TypeScript support with strict mode
 3. **Performance**: Optimized builds with Turborepo
-4. **Maintainability**: Clear package separation
-5. **Scalability**: Easy to add new features or platforms
+4. **Maintainability**: Clear package separation and feature-based organization
+5. **Scalability**: Easy to add new features with consistent structure
 6. **Developer Experience**: Hot reload, linting, formatting
 7. **Cross-Platform**: Single codebase for web and mobile
+8. **Feature Isolation**: Each feature is self-contained with its own Redux state
+9. **Documentation**: Comprehensive README for each feature
 
 ## 🚨 Important Notes
 

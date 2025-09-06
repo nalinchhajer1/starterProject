@@ -22,6 +22,7 @@
         "web": "cd apps/next && yarn next",
         "android": "cd apps/expo && yarn android",
         "ios": "cd apps/expo && yarn ios",
+        "expo:web": "cd apps/expo && yarn web",
         "lint": "expo lint",
         "format": "prettier --write .",
         "format:check": "prettier --check ."

@@ -176,8 +176,29 @@ cd packages/utils && yarn test
 #### Navigation Package (`packages/navigation/`)
 - `navigators.tsx`: Main navigation configuration
 - `screens.tsx`: Screen definitions
-- `components/`: Screen components (DayView, MonthView, etc.)
+- `features/`: Feature-based components with Redux integration
 - `types.ts`: Navigation type definitions
+
+**Feature Structure**:
+```
+features/
+├── feature-dayview/
+│   ├── View/           # DayView component and styles
+│   ├── redux/          # Day-specific Redux (Actions, Slices, Selectors, Types)
+│   └── README.md       # Feature requirements and documentation
+├── feature-monthview/
+│   ├── View/           # MonthView component and styles
+│   ├── redux/          # Month-specific Redux
+│   └── README.md       # Feature requirements
+├── feature-otherview/
+│   ├── View/           # OtherView component and styles
+│   ├── redux/          # Other-specific Redux
+│   └── README.md       # Feature requirements
+└── feature-loading/
+    ├── View/           # LoadingView component and styles
+    ├── redux/          # Loading-specific Redux
+    └── README.md       # Feature requirements
+```
 
 #### State Package (`packages/state/`)
 - `store.ts`: Redux store configuration
@@ -207,29 +228,66 @@ cd packages/utils && yarn test
 
 ### Adding New Calendar Features
 
-1. Update navigation types in `packages/navigation/src/types.ts`
-2. Add new screen component in `packages/navigation/src/components/`
-3. Update navigation configuration in `packages/navigation/src/navigators.tsx`
-4. Add Redux state if needed in `packages/state/src/slices/`
-5. Implement platform-specific logic using `packages/utils/src/platform`
+1. **Create Feature Structure**:
+   ```bash
+   mkdir -p packages/navigation/src/features/feature-[name]/View
+   mkdir -p packages/navigation/src/features/feature-[name]/redux
+   ```
+
+2. **Add View Components**:
+   - Create main component in `View/[FeatureName].tsx`
+   - Add styles in `View/[FeatureName].styles.ts`
+   - Export from `View/index.ts`
+
+3. **Add Redux Structure**:
+   - `redux/[Feature]Actions.ts` - Redux actions
+   - `redux/[Feature]Slices.ts` - Redux slice with reducers
+   - `redux/[Feature]Selector.ts` - Redux selectors
+   - `redux/[Feature]Types.ts` - TypeScript interfaces
+   - Export all from `redux/index.ts`
+
+4. **Add Documentation**:
+   - Create comprehensive `README.md` with product requirements
+   - Document all features, technical requirements, and integration points
+
+5. **Update Navigation**:
+   - Add to navigation types in `packages/navigation/src/types.ts`
+   - Update navigation configuration in `packages/navigation/src/navigators.tsx`
+   - Export from `packages/navigation/src/features/index.ts`
+
+6. **Integration**:
+   - Update `packages/navigation/src/components.tsx` to re-export new feature
+   - Add to main Redux store if needed
+   - Test on both mobile and web platforms
 
 ### Cross-Platform Component Development
 
-1. Create component in appropriate package (`ui` for reusable, `navigation` for screens)
-2. Use React Native StyleSheet for styling
-3. Add platform-specific code using `utils/src/platform`
-4. Implement proper TypeScript interfaces
-5. Add to theme system if needed
-6. Test on both mobile and web platforms
+1. **Feature-Based Development**: Create components within feature folders
+2. **View Structure**: Place components in `View/` folder with separate styles file
+3. **Redux Integration**: Add feature-specific Redux state in `redux/` folder
+4. **Use React Native StyleSheet** for styling
+5. **Add platform-specific code** using `utils/src/platform`
+6. **Implement proper TypeScript interfaces** in `redux/[Feature]Types.ts`
+7. **Add to theme system** if needed
+8. **Test on both mobile and web platforms**
+
+### Feature Naming Convention
+- **Feature folders**: `feature-[name]` (e.g., `feature-dayview`)
+- **Redux files**: `[Feature][Type].ts` (e.g., `DayActions.ts`, `DaySlices.ts`)
+- **Components**: `[FeatureName].tsx` (e.g., `DayView.tsx`)
+- **Styles**: `[FeatureName].styles.ts` (e.g., `DayView.styles.ts`)
 
 ### State Management Implementation
 
-1. Create Redux slice in `packages/state/src/slices/`
-2. Add Redux Saga if side effects are needed
-3. Update store configuration in `packages/state/src/store.ts`
-4. Add proper TypeScript types
-5. Implement persistence if needed
-6. Add migration logic for state changes
+1. **Feature-Specific Redux**: Create Redux structure in `features/feature-[name]/redux/`
+2. **Actions**: Define actions in `[Feature]Actions.ts`
+3. **Slices**: Create slice with reducers in `[Feature]Slices.ts`
+4. **Selectors**: Add selectors in `[Feature]Selector.ts`
+5. **Types**: Define TypeScript interfaces in `[Feature]Types.ts`
+6. **Global State**: Add to main store in `packages/state/src/slices/` if needed
+7. **Redux Saga**: Add side effects if needed
+8. **Persistence**: Implement persistence if needed
+9. **Migration**: Add migration logic for state changes
 
 ### Navigation Updates
 

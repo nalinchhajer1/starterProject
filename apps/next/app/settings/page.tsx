@@ -8,7 +8,7 @@ const SettingsView = lazy(() =>
         default: module.SettingsView
     }))
 );
-const LoadingView = lazy(() => import('navigation/src/components/LoadingView'));
+const LoadingView = lazy(() => import('../../../../packages/features/feature-loading/View/LoadingView'));
 
 export default function SettingsPage() {
     return (

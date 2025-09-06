@@ -3,8 +3,8 @@
 import { Suspense, lazy } from 'react';
 
 // Lazy load components for optimal tree shaking
-const OtherView = lazy(() => import('navigation/src/components/OtherView'));
-const LoadingView = lazy(() => import('navigation/src/components/LoadingView'));
+const OtherView = lazy(() => import('../../../../packages/features/feature-otherview/View/OtherView'));
+const LoadingView = lazy(() => import('../../../../packages/features/feature-loading/View/LoadingView'));
 
 export default function OtherPage() {
     return (
