@@ -9,6 +9,7 @@
         "lint": "next lint"
     },
     "dependencies": {
+        "features": "*",
         "firebase-config": "*",
         "navigation": "*",
         "next": "^15.4.1",

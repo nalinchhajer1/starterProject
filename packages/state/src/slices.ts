@@ -1,10 +1,10 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import appReducer from './slices/appSlice';
-import viewReducer from './slices/viewSlice';
+import AppSlices from 'features/feature-app/redux/AppSlices';
+import ViewSlices from 'features/feature-view/redux/ViewSlices';
 
 const rootReducer = combineReducers({
-    appState: appReducer,
-    viewState: viewReducer
+    appState: AppSlices,
+    viewState: ViewSlices
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

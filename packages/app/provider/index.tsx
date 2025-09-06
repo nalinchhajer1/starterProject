@@ -6,8 +6,8 @@ import { NavigationProvider } from './navigation';
 import { isWeb } from 'utils/src/platform';
 import { CodePushManager, FirebasePushNotificationManager } from 'utils/src/managers';
 import { DEFAULT_LANGUAGE, LanguageChangeManager, LanguageContext } from 'utils/src/language';
-import { getLanguageFromState } from 'state/src/actions/AppSelector';
 import store, { persistor } from 'state/src/store';
+import { getLanguageFromState } from 'features/feature-app/redux';
 
 function AppProviders({ children }: { children: React.ReactNode }) {
     const language = useSelector(getLanguageFromState);

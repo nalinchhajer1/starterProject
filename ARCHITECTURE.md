@@ -14,6 +14,7 @@ starterProject/
 ├── packages/               # Shared packages
 │   ├── app/                # Core app configuration & providers
 │   ├── navigation/         # Navigation logic & screens
+│   ├── features/           # Feature-based components & Redux
 │   ├── state/              # Redux state management
 │   ├── ui/                 # UI components & theming
 │   ├── utils/              # Utility functions & helpers
@@ -40,66 +41,94 @@ starterProject/
 ## 📦 Package Architecture
 
 ### 1. **`packages/app`** - Core Application Layer
+
 **Purpose**: Main application configuration and provider setup
 
 **Key Responsibilities**:
+
 - Application providers (Redux, Navigation, SafeArea)
 - Cross-platform app initialization
 - Solito integration for web/mobile compatibility
 
 **Dependencies**:
+
 - `@react-navigation/native` - Navigation core
 - `react-redux` - State management
 - `redux-persist` - State persistence
 - `solito` - Cross-platform routing
 
 **Key Files**:
+
 - `provider/index.tsx` - Main provider wrapper
 - `provider/navigation/` - Navigation provider setup
 - `provider/safe-area/` - Safe area handling
 
-### 2. **`packages/navigation`** - Navigation & Feature-Based Screens
-**Purpose**: Application navigation structure and feature-based screen components
+### 2. **`packages/navigation`** - Navigation & Screen Components
+
+**Purpose**: Application navigation structure and screen components
 
 **Key Responsibilities**:
+
 - Navigation stack configuration
 - Screen definitions and routing
 - Tab navigation setup
-- Feature-based screen components with Redux integration
+- Screen components without Redux integration
 
 **Dependencies**:
+
 - `@react-navigation/stack` - Stack navigation
 - `@react-navigation/bottom-tabs` - Tab navigation
 - `@react-navigation/native-stack` - Native stack
 
 **Key Files**:
+
 - `navigators.tsx` - Main navigation configuration
 - `screens.tsx` - Screen definitions
-- `features/` - Feature-based components with Redux
+- `components.tsx` - Screen components
 - `types.ts` - Navigation type definitions
 
+### 3. **`packages/features`** - Feature-Based Components & Redux
+
+**Purpose**: Feature-based components with isolated Redux state management
+
+**Key Responsibilities**:
+
+- Feature-specific components and views
+- Feature-specific Redux state (actions, slices, selectors, types)
+- Feature documentation and requirements
+- Cross-platform feature implementation
+
+**Dependencies**:
+
+- `@reduxjs/toolkit` - Redux state management
+- `react-redux` - React Redux integration
+
+**Key Files**:
+
+- `feature-app/` - App-level features and state
+- `feature-view/` - View-level features and state
+- `index.ts` - Feature exports
+
 **Feature Structure**:
+
 ```
 features/
-├── feature-dayview/
-│   ├── View/           # DayView component and styles
-│   ├── redux/          # Day-specific Redux (Actions, Slices, Selectors, Types)
+├── feature-app/
+│   ├── View/           # AppView component and styles
+│   ├── redux/          # App-specific Redux (Actions, Slices, Selectors, Types)
 │   └── README.md       # Feature requirements and documentation
-├── feature-monthview/
-│   ├── View/           # MonthView component and styles
-│   ├── redux/          # Month-specific Redux
+├── feature-view/
+│   ├── View/           # ViewView component and styles
+│   ├── redux/          # View-specific Redux
 │   └── README.md       # Feature requirements
-├── feature-otherview/
-│   ├── View/           # OtherView component and styles
-│   ├── redux/          # Other-specific Redux
-│   └── README.md       # Feature requirements
-└── feature-loading/
-    ├── View/           # LoadingView component and styles
-    ├── redux/          # Loading-specific Redux
+└── [future-features]/
+    ├── View/           # Feature component and styles
+    ├── redux/          # Feature-specific Redux
     └── README.md       # Feature requirements
 ```
 
 **Navigation Structure**:
+
 ```
 RootStack
 ├── Tab (Bottom Tabs)
@@ -116,66 +145,80 @@ RootStack
     └── [Various Jain Calendar Views]
 ```
 
-### 3. **`packages/state`** - State Management
+### 4. **`packages/state`** - State Management
+
 **Purpose**: Global state management using Redux ecosystem
 
 **Key Responsibilities**:
+
 - Redux store configuration
 - State slices (app, view)
 - Redux Saga for side effects
 - State persistence with migrations
 
 **Dependencies**:
+
 - `@reduxjs/toolkit` - Modern Redux
 - `redux-saga` - Side effect management
 - `redux-persist` - State persistence
 
 **Key Files**:
+
 - `store.ts` - Store configuration
 - `slices/` - Redux slices
 - `sagas/` - Redux sagas
 - `migrations.ts` - State migration logic
 
 **State Structure**:
+
 ```typescript
 RootState
 ├── appState     // App configuration, theme, language
 └── viewState    // UI state, navigation state
 ```
 
-### 4. **`packages/ui`** - UI Components & Theming
+### 5. **`packages/ui`** - UI Components & Theming
+
 **Purpose**: Shared UI components and theming system
 
 **Key Responsibilities**:
+
 - Theme definitions (light/dark)
 - Reusable UI components
 - Icon system (FontIcon)
 - Calendar components
 
 **Dependencies**:
+
 - `react-native-vector-icons` - Icon library
 - `react-native-calendar-strip` - Calendar component
 - `react-icomoon` - Custom icon system
 
 **Key Files**:
+
 - `theme.ts` - Theme definitions
 - `FontIcon/` - Icon component system
 - `theme-utils.ts` - Theme utilities
 
 **Theme System**:
+
 ```typescript
 // Theme types
-TYPE_SECTION, TYPE_CARD, TYPE_TEXT, TYPE_BUTTON, etc.
-
-// Themes
-PDLightTheme  // Light theme
-PDDarkTheme   // Dark theme
+(TYPE_SECTION,
+    TYPE_CARD,
+    TYPE_TEXT,
+    TYPE_BUTTON,
+    // Themes
+    etc.PDLightTheme); // Light theme
+PDDarkTheme; // Dark theme
 ```
 
-### 5. **`packages/utils`** - Utilities & Helpers
+### 6. **`packages/utils`** - Utilities & Helpers
+
 **Purpose**: Shared utility functions and platform-specific helpers
 
 **Key Responsibilities**:
+
 - Platform detection (web/mobile)
 - Device information
 - Localization (English/Hindi)
@@ -183,22 +226,26 @@ PDDarkTheme   // Dark theme
 - Permission management
 
 **Dependencies**:
+
 - `react-native-device-info` - Device information
 - `react-native-permissions` - Permission handling
 - `moment-timezone` - Date/time utilities
 - `react-localization` - Internationalization
 
 **Key Files**:
+
 - `platform.ts` - Platform detection
 - `device.ts` - Device utilities
 - `language.ts` - Localization
 - `storage.ts` - Storage utilities
 - `colors.ts` - Color definitions
 
-### 6. **`packages/firebase`** - Firebase Integration
+### 7. **`packages/firebase`** - Firebase Integration
+
 **Purpose**: Firebase services configuration and integration
 
 **Key Responsibilities**:
+
 - Firebase app initialization
 - Analytics tracking
 - Crashlytics reporting
@@ -206,6 +253,7 @@ PDDarkTheme   // Dark theme
 - Remote config
 
 **Dependencies**:
+
 - `@react-native-firebase/app` - Core Firebase
 - `@react-native-firebase/analytics` - Analytics
 - `@react-native-firebase/crashlytics` - Crash reporting
@@ -214,15 +262,18 @@ PDDarkTheme   // Dark theme
 ## 🚀 Applications
 
 ### **`apps/expo`** - React Native Mobile App
+
 **Platform**: iOS & Android via Expo
 
 **Key Features**:
+
 - Native mobile experience
 - Platform-specific optimizations
 - Native modules integration
 - App store deployment ready
 
 **Entry Point**: `App.tsx`
+
 ```typescript
 <Provider>
     <RootStackScreen />
@@ -230,15 +281,18 @@ PDDarkTheme   // Dark theme
 ```
 
 ### **`apps/next`** - Next.js Web App
+
 **Platform**: Web browsers
 
 **Key Features**:
+
 - Server-side rendering (SSR)
 - Static site generation (SSG)
 - Web-optimized performance
 - SEO-friendly
 
 **Entry Point**: `app/layout.tsx` + `app/page.tsx`
+
 ```typescript
 <StylesProvider>
     <Suspense fallback={<LoadingView />}>
@@ -250,6 +304,7 @@ PDDarkTheme   // Dark theme
 ## 🔧 Development Workflow
 
 ### **Scripts Available**:
+
 ```bash
 # Development
 yarn native    # Start Expo development server
@@ -267,41 +322,57 @@ yarn build     # Build all apps (via Turborepo)
 ```
 
 ### **Path Mapping** (TypeScript):
+
 ```json
 {
-  "app/*": ["../../packages/app/*"],
-  "navigation/*": ["../../packages/navigation/*"],
-  "state/*": ["../../packages/state/*"],
-  "ui/*": ["../../packages/ui/*"],
-  "utils/*": ["../../packages/utils/*"],
-  "firebase-config/*": ["../../packages/firebase/*"]
+    "app/*": ["../../packages/app/*"],
+    "navigation/*": ["../../packages/navigation/*"],
+    "state/*": ["../../packages/state/*"],
+    "ui/*": ["../../packages/ui/*"],
+    "utils/*": ["../../packages/utils/*"],
+    "firebase-config/*": ["../../packages/firebase/*"]
 }
 ```
 
 ## 🎨 Design Patterns
 
 ### **1. Provider Pattern**
+
 - Centralized provider setup in `packages/app`
 - Redux, Navigation, and SafeArea providers
 - Platform-specific provider implementations
 
 ### **2. Feature-Based Organization**
+
 - Each package represents a feature domain
 - Clear separation of concerns
 - Reusable across platforms
 
 ### **3. Feature-Based Component Architecture**
+
 - Each feature has its own folder with View and Redux subfolders
 - Consistent naming convention: `feature-[name]/View/` and `feature-[name]/redux/`
 - Redux files follow pattern: `[Feature]Actions.ts`, `[Feature]Slices.ts`, `[Feature]Selector.ts`, `[Feature]Types.ts`
 - Each feature includes comprehensive README.md with product requirements
 
-### **4. Cross-Platform Compatibility**
+### **4. Redux Pattern Standards**
+
+- **Traditional Action Creators**: Use function-based action creators, not RTK createAction
+- **Action Type Constants**: Define action types in `[Feature]Types.ts` as const objects
+- **State Interface Definition**: Define state interfaces directly in `[Feature]Slices.ts` files, not in Types files
+- **extraReducers Pattern**: Use extraReducers in slices to handle traditional actions
+- **Function-based Selectors**: Use function selectors with RootState typing
+- **Mixed State Structure**: Support both appState and viewState in RootState
+- **No RTK Actions Export**: Don't export slice actions when using traditional action creators
+
+### **5. Cross-Platform Compatibility**
+
 - Solito for navigation compatibility
 - Platform-specific implementations when needed
 - Shared business logic and UI components
 
-### **5. State Management Pattern**
+### **6. State Management Pattern**
+
 - Redux Toolkit for state management
 - Redux Saga for side effects
 - Redux Persist for state persistence
@@ -328,11 +399,13 @@ UI Re-render
 ## 🛠️ Build & Deployment
 
 ### **Turborepo Configuration**:
+
 - Optimized build caching
 - Parallel task execution
 - Dependency-aware builds
 
 ### **Platform-Specific Builds**:
+
 - **Expo**: `expo build` for mobile app stores
 - **Next.js**: `next build` for web deployment
 
@@ -352,38 +425,40 @@ Based on the navigation structure, this Jain Calendar app includes:
 ### **Feature Development Workflow**
 
 1. **Create Feature Structure**:
-   ```bash
-   mkdir -p packages/navigation/src/features/feature-[name]/View
-   mkdir -p packages/navigation/src/features/feature-[name]/redux
-   ```
+
+    ```bash
+    mkdir -p packages/features/feature-[name]/View
+    mkdir -p packages/features/feature-[name]/redux
+    ```
 
 2. **Add View Components**:
-   - Create main component in `View/[FeatureName].tsx`
-   - Add styles in `View/[FeatureName].styles.ts`
-   - Export from `View/index.ts`
+    - Create main component in `View/[FeatureName].tsx`
+    - Add styles in `View/[FeatureName].styles.ts`
+    - Export from `View/index.ts`
 
-3. **Add Redux Structure**:
-   - `redux/[Feature]Actions.ts` - Redux actions
-   - `redux/[Feature]Slices.ts` - Redux slice with reducers
-   - `redux/[Feature]Selector.ts` - Redux selectors
-   - `redux/[Feature]Types.ts` - TypeScript interfaces
-   - Export all from `redux/index.ts`
+3. **Add Redux Structure** (Following existing pattern):
+    - `redux/[Feature]Actions.ts` - Traditional action creators (function-based)
+    - `redux/[Feature]Types.ts` - Action type constants only (no state interfaces)
+    - `redux/[Feature]Slices.ts` - Redux slice with extraReducers for traditional actions + state interface definition
+    - `redux/[Feature]Selector.ts` - Function-based selectors with RootState typing
+    - Export all from `redux/index.ts`
 
 4. **Add Documentation**:
-   - Create comprehensive `README.md` with product requirements
-   - Document all features, technical requirements, and integration points
+    - Create comprehensive `README.md` with product requirements
+    - Document all features, technical requirements, and integration points
 
 5. **Update Navigation**:
-   - Add to navigation types in `types.ts`
-   - Update navigation configuration in `navigators.tsx`
-   - Export from `features/index.ts`
+    - Add to navigation types in `packages/navigation/src/types.ts`
+    - Update navigation configuration in `packages/navigation/src/navigators.tsx`
+    - Export from `packages/features/index.ts`
 
 6. **Integration**:
-   - Update `components.tsx` to re-export new feature
-   - Add to main Redux store if needed
-   - Test on both mobile and web platforms
+    - Update `packages/navigation/src/components.tsx` to re-export new feature
+    - Add to main Redux store in `packages/state/src/slices.ts` if needed
+    - Test on both mobile and web platforms
 
 ### **Feature Naming Convention**
+
 - Feature folders: `feature-[name]` (e.g., `feature-dayview`)
 - Redux files: `[Feature][Type].ts` (e.g., `DayActions.ts`, `DaySlices.ts`)
 - Components: `[FeatureName].tsx` (e.g., `DayView.tsx`)

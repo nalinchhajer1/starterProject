@@ -1,6 +1,7 @@
 import { all, fork, put, select, takeEvery, takeLatest, takeLeading } from 'redux-saga/effects';
-import { APP_TYPE, getHaveAskedForLocationFromState } from '../types/AppTypes';
-import { setCurrentAudio, setFetchingLocation, setUserLocation } from '../actions/AppAction';
+import { APP_TYPE } from './AppTypes';
+import { setCurrentAudio, setFetchingLocation, setUserLocation } from './AppActions';
+import { getHaveAskedForLocationFromState } from './AppSelector';
 
 // Placeholder for your existing constants
 // You'll replace these when you copy your actual project

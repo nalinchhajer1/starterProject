@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { APP_TYPE } from '../types/AppTypes';
+import { APP_TYPE } from './AppTypes';
 
 // Placeholder for DEFAULT_LANGUAGE - you'll replace this when copying your constants
 const DEFAULT_LANGUAGE = 'en';
@@ -36,7 +36,7 @@ const appSlice = createSlice({
     name: 'app',
     initialState,
     reducers: {},
-    // Handle your existing action types
+    // Handle your existing action types using extraReducers
     extraReducers: (builder) => {
         builder
             .addCase(APP_TYPE.SET_APP_LANGUAGE as any, (state, action: any) => {

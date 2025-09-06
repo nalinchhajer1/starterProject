@@ -1,4 +1,4 @@
-// App Action Types based on existing project
+// App Action Types - Following existing project pattern
 export const APP_TYPE = {
     // App Actions
     ON_APP_INITIALIZE: 'ON_APP_INITIALIZE',
@@ -20,28 +20,3 @@ export const APP_TYPE = {
     STOP_AUDIO_TRACK: 'STOP_AUDIO_TRACK',
     PERFORM_APP_DEVELOPER_ACTION: 'PERFORM_APP_DEVELOPER_ACTION'
 } as const;
-
-// Selectors based on existing project
-export const getHaveAskedForLocationFromState = (state: any) => {
-    return state.appState?.dontAskForLocationOnLaunch || false;
-};
-
-export const getUserLocationFromState = (state: any) => {
-    return state.appState?.userLocation || null;
-};
-
-export const getCurrentAudioFromState = (state: any) => {
-    return state.viewState?.currentPlayingAudio || null;
-};
-
-export const getFetchingLocationFromState = (state: any) => {
-    return state.viewState?.fetchingLocation || false;
-};
-
-export const getSelectedDateFromState = (state: any) => {
-    return state.viewState?.selectedDate || null;
-};
-
-export const getSavedLocationFromState = (state: any) => {
-    return state.appState?.savedLocation || null;
-};

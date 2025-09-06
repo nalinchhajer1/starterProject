@@ -17,7 +17,7 @@ import {
 } from './components';
 import { isWeb } from 'utils/src/platform';
 import Strings from 'utils/src/language';
-import { onAppInitialize } from 'state/src/actions/AppAction';
+import { onAppInitialize } from 'features/feature-app/redux';
 
 const RootStack = createStackNavigator<RootStackParamList>();
 
@@ -184,7 +184,7 @@ class RootStackScreenComponent extends Component<Props> {
 const mapStateToProps = () => ({});
 
 const mapDispatchToProps = {
-    onAppInitialize
+    onAppInitialize: onAppInitialize
 };
 
 export const RootStackScreen = connect(mapStateToProps, mapDispatchToProps)(RootStackScreenComponent);

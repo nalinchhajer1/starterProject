@@ -6649,6 +6649,7 @@ __metadata:
     expo-linking: "npm:~7.1.7"
     expo-splash-screen: "npm:~0.30.10"
     expo-status-bar: "npm:~2.2.3"
+    features: "npm:*"
     firebase-config: "npm:*"
     navigation: "npm:*"
     react: "npm:^19.1.1"
@@ -7014,6 +7015,18 @@ __metadata:
   checksum: 10/14ca1c9f0a0e8f4f2e9bf4e8551065a164a09545dae548c12a18d238b72e51e5a7b39bd8e5494b56463a0877672d0a6c1ef62c6fa0677db1b0c847773be939b1
   languageName: node
   linkType: hard
+
+"features@npm:*, features@workspace:packages/features":
+  version: 0.0.0-use.local
+  resolution: "features@workspace:packages/features"
+  dependencies:
+    "@reduxjs/toolkit": "npm:^2.4.0"
+    react-redux: "npm:^9.1.2"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  languageName: unknown
+  linkType: soft
 
 "file-entry-cache@npm:^8.0.0":
   version: 8.0.0
@@ -9508,6 +9521,7 @@ __metadata:
     "@react-navigation/native": "npm:^7.1.0"
     "@react-navigation/native-stack": "npm:^7.1.0"
     "@react-navigation/stack": "npm:^7.1.0"
+    features: "npm:*"
     state: "npm:*"
     ui: "npm:*"
     utils: "npm:*"
@@ -9554,6 +9568,7 @@ __metadata:
   dependencies:
     "@types/node": "npm:17.0.21"
     eslint-config-next: "npm:13.2.0"
+    features: "npm:*"
     firebase-config: "npm:*"
     navigation: "npm:*"
     next: "npm:^15.4.1"

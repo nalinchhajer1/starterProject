@@ -37,6 +37,7 @@ starterProject/
 ├── packages/
 │   ├── app/                # Core app configuration & providers
 │   ├── navigation/         # Navigation logic & screens
+│   ├── features/           # Feature-based components & Redux
 │   ├── state/              # Redux state management
 │   ├── ui/                 # UI components & theming
 │   ├── utils/              # Utility functions & helpers
@@ -176,27 +177,28 @@ cd packages/utils && yarn test
 #### Navigation Package (`packages/navigation/`)
 - `navigators.tsx`: Main navigation configuration
 - `screens.tsx`: Screen definitions
-- `features/`: Feature-based components with Redux integration
+- `components.tsx`: Screen components
 - `types.ts`: Navigation type definitions
+
+#### Features Package (`packages/features/`)
+- `feature-app/`: App-level features and Redux state
+- `feature-view/`: View-level features and Redux state
+- `index.ts`: Feature exports
 
 **Feature Structure**:
 ```
 features/
-├── feature-dayview/
-│   ├── View/           # DayView component and styles
-│   ├── redux/          # Day-specific Redux (Actions, Slices, Selectors, Types)
+├── feature-app/
+│   ├── View/           # AppView component and styles
+│   ├── redux/          # App-specific Redux (Actions, Slices, Selectors, Types)
 │   └── README.md       # Feature requirements and documentation
-├── feature-monthview/
-│   ├── View/           # MonthView component and styles
-│   ├── redux/          # Month-specific Redux
+├── feature-view/
+│   ├── View/           # ViewView component and styles
+│   ├── redux/          # View-specific Redux
 │   └── README.md       # Feature requirements
-├── feature-otherview/
-│   ├── View/           # OtherView component and styles
-│   ├── redux/          # Other-specific Redux
-│   └── README.md       # Feature requirements
-└── feature-loading/
-    ├── View/           # LoadingView component and styles
-    ├── redux/          # Loading-specific Redux
+└── [future-features]/
+    ├── View/           # Feature component and styles
+    ├── redux/          # Feature-specific Redux
     └── README.md       # Feature requirements
 ```
 
@@ -230,8 +232,8 @@ features/
 
 1. **Create Feature Structure**:
    ```bash
-   mkdir -p packages/navigation/src/features/feature-[name]/View
-   mkdir -p packages/navigation/src/features/feature-[name]/redux
+   mkdir -p packages/features/feature-[name]/View
+   mkdir -p packages/features/feature-[name]/redux
    ```
 
 2. **Add View Components**:
@@ -239,11 +241,11 @@ features/
    - Add styles in `View/[FeatureName].styles.ts`
    - Export from `View/index.ts`
 
-3. **Add Redux Structure**:
-   - `redux/[Feature]Actions.ts` - Redux actions
-   - `redux/[Feature]Slices.ts` - Redux slice with reducers
-   - `redux/[Feature]Selector.ts` - Redux selectors
-   - `redux/[Feature]Types.ts` - TypeScript interfaces
+3. **Add Redux Structure** (Following existing pattern):
+   - `redux/[Feature]Actions.ts` - Traditional action creators (function-based)
+   - `redux/[Feature]Types.ts` - Action type constants only (no state interfaces)
+   - `redux/[Feature]Slices.ts` - Redux slice with extraReducers for traditional actions + state interface definition
+   - `redux/[Feature]Selector.ts` - Function-based selectors with RootState typing
    - Export all from `redux/index.ts`
 
 4. **Add Documentation**:
@@ -253,11 +255,11 @@ features/
 5. **Update Navigation**:
    - Add to navigation types in `packages/navigation/src/types.ts`
    - Update navigation configuration in `packages/navigation/src/navigators.tsx`
-   - Export from `packages/navigation/src/features/index.ts`
+   - Export from `packages/features/index.ts`
 
 6. **Integration**:
    - Update `packages/navigation/src/components.tsx` to re-export new feature
-   - Add to main Redux store if needed
+   - Add to main Redux store in `packages/state/src/slices.ts` if needed
    - Test on both mobile and web platforms
 
 ### Cross-Platform Component Development
@@ -279,15 +281,25 @@ features/
 
 ### State Management Implementation
 
-1. **Feature-Specific Redux**: Create Redux structure in `features/feature-[name]/redux/`
-2. **Actions**: Define actions in `[Feature]Actions.ts`
-3. **Slices**: Create slice with reducers in `[Feature]Slices.ts`
-4. **Selectors**: Add selectors in `[Feature]Selector.ts`
-5. **Types**: Define TypeScript interfaces in `[Feature]Types.ts`
-6. **Global State**: Add to main store in `packages/state/src/slices/` if needed
+1. **Feature-Specific Redux**: Create Redux structure in `packages/features/feature-[name]/redux/`
+2. **Actions**: Define traditional action creators in `[Feature]Actions.ts` (function-based, not RTK createAction)
+3. **Types**: Define action type constants only in `[Feature]Types.ts` (no state interfaces)
+4. **Slices**: Create slice with extraReducers in `[Feature]Slices.ts` to handle traditional actions + define state interface
+5. **Selectors**: Add function-based selectors with RootState typing in `[Feature]Selector.ts`
+6. **Global State**: Add to main store in `packages/state/src/slices.ts` if needed
 7. **Redux Saga**: Add side effects if needed
 8. **Persistence**: Implement persistence if needed
 9. **Migration**: Add migration logic for state changes
+
+### Redux Pattern Standards
+
+- **Traditional Action Creators**: Use function-based action creators, not RTK createAction
+- **Action Type Constants**: Define action types in `[Feature]Types.ts` as const objects
+- **State Interface Definition**: Define state interfaces directly in `[Feature]Slices.ts` files, not in Types files
+- **extraReducers Pattern**: Use extraReducers in slices to handle traditional actions
+- **Function-based Selectors**: Use function selectors with RootState typing
+- **Mixed State Structure**: Support both appState and viewState in RootState
+- **No RTK Actions Export**: Don't export slice actions when using traditional action creators
 
 ### Navigation Updates
 

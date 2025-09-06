@@ -8,6 +8,7 @@
         "@react-navigation/native": "^7.1.0",
         "@react-navigation/native-stack": "^7.1.0",
         "@react-navigation/stack": "^7.1.0",
+        "features": "*",
         "state": "*",
         "ui": "*",
         "utils": "*"
