@@ -3,13 +3,13 @@
 import { Suspense, lazy } from 'react';
 
 // Lazy load components for optimal tree shaking
-const MonthView = lazy(() => import('features/feature-monthview/View/MonthView'));
+const PageTwoView = lazy(() => import('features/feature-pagetwo/View/PageTwoView'));
 const LoadingView = lazy(() => import('features/feature-loading/View/LoadingView'));
 
-export default function MonthPage() {
+export default function PageTwoPage() {
     return (
-        <Suspense fallback={<LoadingView message="Loading Month View..." />}>
-            <MonthView />
+        <Suspense fallback={<LoadingView message="Loading..." />}>
+            <PageTwoView />
         </Suspense>
     );
 }

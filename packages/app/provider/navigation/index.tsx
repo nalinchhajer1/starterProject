@@ -18,8 +18,8 @@ export function NavigationProvider({ children }: { children: React.ReactNode }) 
                             Tab: {
                                 path: '/',
                                 screens: {
-                                    DAY_VIEW: 'day',
-                                    MONTH_VIEW: 'month',
+                                    PAGE_ONE_VIEW: 'one',
+                                    PAGE_TWO_VIEW: 'two',
                                     OTHER_VIEW: 'other'
                                 }
                             },

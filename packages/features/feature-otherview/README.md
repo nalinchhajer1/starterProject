@@ -2,7 +2,7 @@
 
 ## Overview
 
-Other View feature for the Jain Calendar application.
+Other View feature for the Starter Project.
 
 ## Structure
 

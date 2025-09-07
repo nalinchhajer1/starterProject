@@ -10,7 +10,6 @@ export const LanguageContext = React.createContext<string>(DEFAULT_LANGUAGE);
 // React-localization setup
 const Strings = new LocalizedStrings({
     en: require('./resource/language/en.json'),
-    hn: require('./resource/language/hn.json'),
     ...require('./resource/language/en.json')
 }) as LocalizedStrings & Record<string, string>;
 

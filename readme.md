@@ -1,86 +1,313 @@
-# Blank Solito Example Monorepo 🕴
+# Starter Project🕴
+
+A comprehensive starter application built with Solito, supporting both React Native (Expo) and Next.js platforms.
+
+## 🚀 Quick Start
 
 ```sh
-npx create-solito-app@latest my-solito-app
+# Clone the repository
+git clone <repository-url>
+cd starterProject
+
+# Install dependencies
+pnpm install
+
+# Start development servers
+pnpm native    # Start Expo development server
+pnpm web       # Start Next.js development server
 ```
-
-👾 [View the website](https://example.solito.dev)
-
-## ⚡️ Instantly clone & deploy
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fnandorojo%2Fsolito%2Ftree%2Fmaster%2Fexample-monorepos%2Fblank&env=ENABLE_ROOT_PATH_BUILD_CACHE&root-directory=apps/next&envDescription=Set%20this%20environment%20variable%20to%201%20for%20Turborepo%20to%20cache%20your%20node_modules.&envLink=https%3A%2F%2Ftwitter.com%2Fjaredpalmer%2Fstatus%2F1488954563533189124&project-name=solito-app&repo-name=solito-app&demo-title=Solito%20App%20%E2%9A%A1%EF%B8%8F&demo-description=React%20Native%20%2B%20Next.js%20starter%20with%20Solito.%20Made%20by%20Fernando%20Rojo.&demo-url=https%3A%2F%2Fsolito.dev%2Fstarter&demo-image=https%3A%2F%2Fsolito.dev%2Fimg%2Fog.png&build-command=cd+..%2F..%3Bnpx+turbo+run+build+--filter%3Dnext-app)
 
 ## 🔦 About
 
-This monorepo is a blank(ish) starter for an Expo + Next.js app.
+This monorepo is a **Starter application** built with modern cross-platform technologies. It provides a comprehensive template with features like:
 
-While it's pretty barebones, it does a lot of the annoying config for you. The folder structure is opinionated, based on my long experience building for this stack.
+- **Tab Navigation**: Three main tabs with PageOne, PageTwo, and Other views
+- **Cross-Platform**: Native mobile (iOS/Android) and web applications
+- **Feature-Based Architecture**: Modular feature structure for easy development
+- **State Management**: Redux-based state management with persistence
+- **Multi-language Support**: English and Hindi localization
+- **Modern Stack**: Latest React Native, Next.js, and development tools
 
-## 📦 Included packages
+The architecture follows a **feature-based approach** with shared business logic across platforms.
 
-- `solito` for cross-platform navigation
-- `moti` for animations
-- Expo SDK 53
-- Next.js 15
-- React Navigation 7
-- React 19 (read more below)
-- React Compiler
+## 📦 Technology Stack
+
+### Core Technologies
+- **Monorepo Management**: pnpm Workspaces + Nx
+- **Cross-Platform**: Solito (React Native + Next.js)
+- **State Management**: Redux Toolkit + Redux Saga + Redux Persist
+- **Navigation**: React Navigation v7
+- **Styling**: React Native StyleSheet + CSS (web)
+- **TypeScript**: Strict mode with path mapping
+- **Code Quality**: ESLint + Prettier
+
+### Platform Versions
+- **Mobile**: Expo SDK 53 with React Native 0.79.5
+- **Web**: Next.js 15 with React 19.1.1
+- **Package Manager**: pnpm with workspace support
+- **Build System**: Nx for optimized builds and caching
 
 For more, see the [compatibility docs](https://solito.dev/compatibility).
 
-## 🗂 Folder layout
+## 🗂 Project Structure
 
-- `apps` entry points for each app
-    - `expo`
-    - `next`
-
-- `packages` shared packages across apps
-    - `app` you'll be importing most files from `app/`
-        - `features` (don't use a `screens` folder. organize by feature.)
-        - `provider` (all the providers that wrap the app, and some no-ops for Web.)
-        - `navigation` Next.js has a `pages/` folder. React Native doesn't. This folder contains navigation-related code for RN. You may use it for any navigation code, such as custom links.
-
-You can add other folders inside of `packages/` if you know what you're doing and have a good reason to.
-
-## 🏁 Start the app
-
-- Install dependencies: `yarn`
-
-- Next.js local dev: `yarn web`
-    - Runs `yarn next`
-- Expo local dev:
-    - First, build a dev client onto your device or simulator
-        - `cd apps/expo`
-        - Then, either `expo run:ios`, or `eas build`
-    - After building the dev client, from the root of the monorepo...
-        - `yarn native` (This runs `expo start --dev-client`)
-
-## 🆕 Add new dependencies
-
-### Pure JS dependencies
-
-If you're installing a JavaScript-only dependency that will be used across platforms, install it in `packages/app`:
-
-```sh
-cd packages/app
-yarn add date-fns
-cd ../..
-yarn
+```
+starterProject/
+├── apps/                    # Platform-specific applications
+│   ├── expo/               # React Native (Expo) mobile app
+│   └── next/               # Next.js web app
+├── packages/               # Shared packages
+│   ├── app/                # Core app configuration & providers
+│   ├── navigation/         # Navigation logic & screens
+│   ├── features/           # Feature-based components & Redux
+│   ├── state/              # Redux state management
+│   ├── ui/                 # UI components & theming
+│   ├── utils/              # Utility functions & helpers
+│   ├── firebase/           # Firebase configuration
+│   └── types/              # Shared TypeScript types
+├── package.json            # Root package configuration
+├── nx.json                 # Nx configuration
+├── tsconfig.json          # TypeScript configuration
+└── eslint.config.js       # ESLint configuration
 ```
 
-### Native dependencies
+### Package Descriptions
 
-If you're installing a library with any native code, you must install it in `apps/expo`:
+- **`apps/expo`**: React Native mobile app with Expo SDK 53
+- **`apps/next`**: Next.js web application with App Router
+- **`packages/app`**: Core app configuration and provider setup
+- **`packages/navigation`**: Navigation logic and screen components
+- **`packages/features`**: Feature-based components with isolated Redux state
+- **`packages/state`**: Global Redux state management
+- **`packages/ui`**: Shared UI components and theming system
+- **`packages/utils`**: Utility functions and platform-specific helpers
+- **`packages/firebase`**: Firebase services configuration
+- **`packages/types`**: Shared TypeScript type definitions
 
-```sh
+## 🏁 Development Commands
+
+### Prerequisites
+- **Node.js**: 18.x or higher
+- **pnpm**: Install globally with `npm install -g pnpm`
+- **Expo CLI**: Install globally with `npm install -g @expo/cli`
+
+### Installation & Setup
+```bash
+# Install all dependencies
+pnpm install
+
+# Verify Nx projects are recognized
+pnpm nx show projects
+```
+
+### Development Servers
+```bash
+# Start Next.js web development server
+pnpm web
+
+# Start Expo mobile development server
+pnpm native
+
+# Run on specific platforms
+pnpm android    # Run on Android device/emulator
+pnpm ios        # Run on iOS device/simulator
+```
+
+### Mobile Development Setup
+```bash
+# For Expo development:
+# 1. Build a dev client onto your device or simulator
 cd apps/expo
-yarn add react-native-reanimated
+expo run:ios     # For iOS
+expo run:android # For Android
 
-cd ../..
-yarn
+# 2. After building the dev client, from the root:
+pnpm native      # Runs expo start --dev-client
 ```
 
-You can also install the native library inside of `packages/app` if you want to get autoimport for that package inside of the `app` folder. However, you need to be careful and install the _exact_ same version in both packages. If the versions mismatch at all, you'll potentially get terrible bugs. This is a classic monorepo issue. I use `lerna-update-wizard` to help with this (you don't need to use Lerna to use that lib).
+## 🆕 Adding Dependencies
+
+### Pure JavaScript Dependencies
+
+For JavaScript-only dependencies used across platforms, install in the appropriate package:
+
+```bash
+# For shared utilities (used across platforms)
+cd packages/utils
+pnpm add date-fns
+cd ../..
+
+# For UI components
+cd packages/ui
+pnpm add react-native-vector-icons
+cd ../..
+
+# Install all dependencies
+pnpm install
+```
+
+### Native Dependencies
+
+For libraries with native code, install in `apps/expo`:
+
+```bash
+cd apps/expo
+pnpm add react-native-reanimated
+cd ../..
+
+# Install all dependencies
+pnpm install
+```
+
+### Workspace Dependencies
+
+For internal package dependencies, use workspace protocol:
+
+```bash
+# In package.json
+"dependencies": {
+  "utils": "workspace:*",
+  "ui": "workspace:*"
+}
+```
+
+**Important**: When installing the same library in multiple packages, ensure exact version matching to avoid conflicts.
+
+## ⚡️ Available Commands
+
+### Development
+```bash
+# Start development servers
+pnpm native    # Start Expo development server
+pnpm web       # Start Next.js development server
+pnpm android   # Run on Android device/emulator
+pnpm ios       # Run on iOS device/simulator
+```
+
+### Building
+```bash
+# Build all projects
+pnpm build         # Build all projects
+pnpm build:expo    # Build Expo app only
+pnpm build:next    # Build Next.js app only
+
+# Build specific packages
+pnpm nx build features
+pnpm nx build state
+pnpm nx build ui
+```
+
+### Code Quality
+```bash
+# Linting and formatting
+pnpm lint          # Run ESLint across all projects
+pnpm lint:fix      # Run ESLint with auto-fix
+pnpm format        # Format code with Prettier
+pnpm format:check  # Check formatting without changes
+
+# Lint specific packages
+pnpm nx lint features
+pnpm nx lint state
+pnpm nx lint next-app
+```
+
+### Testing
+```bash
+# Run tests
+pnpm test          # Test all projects
+pnpm nx test features
+pnpm nx test state
+```
+
+### Nx Specific Commands
+```bash
+# Project management
+pnpm nx show projects           # List all projects
+pnpm nx graph                  # Show dependency graph
+pnpm nx reset                  # Reset Nx cache
+
+# Affected commands (build only changed projects)
+pnpm nx affected:build         # Build affected projects
+pnpm nx affected:test          # Test affected projects
+pnpm nx affected:lint          # Lint affected projects
+
+# Run commands for specific projects
+pnpm nx run features:build
+pnpm nx run state:test
+pnpm nx run next-app:lint
+```
+
+### Package-Specific Commands
+```bash
+# Navigation package
+pnpm nx build navigation
+pnpm nx test navigation
+pnpm nx lint navigation
+
+# State package
+pnpm nx build state
+pnpm nx test state
+pnpm nx lint state
+
+# UI package
+pnpm nx build ui
+pnpm nx test ui
+pnpm nx lint ui
+
+# Utils package
+pnpm nx build utils
+pnpm nx test utils
+pnpm nx lint utils
+```
+
+## 🔧 Troubleshooting
+
+### Common Issues
+
+1. **Node Modules Issues**
+   ```bash
+   pnpm install --frozen-lockfile
+   ```
+
+2. **Cache Issues**
+   ```bash
+   pnpm reset
+   pnpm nx reset
+   ```
+
+3. **Build Issues**
+   ```bash
+   pnpm nx build --verbose
+   ```
+
+4. **Dependency Issues**
+   ```bash
+   pnpm install --force
+   ```
+
+### Verification Commands
+```bash
+# Check workspace structure
+pnpm list --depth=0
+
+# Verify Nx projects
+pnpm nx show projects
+
+# Check build status
+pnpm nx run-many --target=build --all
+
+# Verify linting
+pnpm nx run-many --target=lint --all
+```
+
+## 📚 Documentation
+
+- **Architecture**: See `ARCHITECTURE.md` for detailed monorepo architecture
+- **Migration**: See `MIGRATION_GUIDE.md` for migration from Yarn + Turborepo
+- **Solito**: [Cross-platform React Native + Next.js](https://solito.dev/)
+- **Expo**: [Mobile development documentation](https://docs.expo.dev/)
+- **Next.js**: [Web development documentation](https://nextjs.org/docs)
+- **Nx**: [Monorepo build system](https://nx.dev/)
 
 ## 🎙 About the creator
 
@@ -88,7 +315,16 @@ Follow Fernando Rojo on Twitter: [@FernandoTheRojo](https://twitter.com/fernando
 
 ## 🧐 Why use Expo + Next.js?
 
-See my talk about this topic at Next.js Conf 2021:
+This architecture provides several key benefits:
+
+- **Code Reusability**: Share business logic and components across platforms
+- **Type Safety**: Full TypeScript support with strict mode
+- **Performance**: Optimized builds with Nx caching and parallel execution
+- **Developer Experience**: Hot reload, linting, formatting, and comprehensive tooling
+- **Scalability**: Easy to add new features with consistent structure
+- **Cross-Platform**: Single codebase for web and mobile applications
+
+See Fernando Rojo's talk about this topic at Next.js Conf 2021:
 
 <a href="https://www.youtube.com/watch?v=0lnbdRweJtA"><img width="1332" alt="image" src="https://user-images.githubusercontent.com/13172299/157299915-b633e083-f271-48c6-a262-7b7eef765be5.png">
 </a>
