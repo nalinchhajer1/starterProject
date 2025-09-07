@@ -1,11 +1,11 @@
 // Re-export components from feature-based structure
-export { DayView } from '../../features/feature-dayview/View';
-export { MonthView } from '../../features/feature-monthview/View';
-export { OtherView } from '../../features/feature-otherview/View';
-export { LoadingView } from '../../features/feature-loading/View';
-
 import * as React from 'react';
 import { View, Text } from 'react-native';
+
+export { DayView } from '../../feature-dayview/View';
+export { MonthView } from '../../feature-monthview/View';
+export { OtherView } from '../../feature-otherview/View';
+export { LoadingView } from '../../feature-loading/View';
 
 // Individual screen components without React Navigation dependencies
 // These can be used on both web and mobile

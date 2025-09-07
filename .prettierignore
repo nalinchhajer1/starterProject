@@ -1,0 +1,32 @@
+# Prettier-specific exclusions (gitignore already covers most build/cache files)
+
+# Configuration files that shouldn't be formatted
+.prettierrc
+.prettierrc.*
+.eslintrc.*
+eslint.config.*
+.yarnrc.*
+.yarnrc.yml
+
+# Documentation files
+*.md
+README.md
+CHANGELOG.md
+LICENSE
+
+# Lock files (these are generated and shouldn't be formatted)
+pnpm-lock.yaml
+pnpm-workspace.yaml
+yarn.lock
+package-lock.json
+
+# Android build files (specific JSON files that shouldn't be formatted)
+**/android_gradle_build*.json
+**/compile_commands.json
+**/prefab_config.json
+**/cmakeFiles-*.json
+**/cache-*.json
+**/codemodel-*.json
+**/directory-*.json
+**/target-*.json
+**/index-*.json

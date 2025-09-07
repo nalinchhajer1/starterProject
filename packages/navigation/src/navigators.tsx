@@ -14,7 +14,7 @@ import {
     AppDeveloperView,
     SponsorView,
     SelectLocation
-} from './components';
+} from 'features/feature-extras/View/components';
 import { isWeb } from 'utils/src/platform';
 import Strings from 'utils/src/language';
 import { onAppInitialize } from 'features/feature-app/redux';

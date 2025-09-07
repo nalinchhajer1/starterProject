@@ -1,0 +1,72 @@
+{
+    "name": "expo-app",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "apps/expo",
+    "projectType": "application",
+    "targets": {
+        "start": {
+            "executor": "@nx/expo:start",
+            "options": {
+                "port": 8081
+            }
+        },
+        "serve": {
+            "executor": "@nx/expo:start",
+            "options": {
+                "dev": true
+            }
+        },
+    "run-ios": {
+      "executor": "nx:run-script",
+      "options": {
+        "script": "ios"
+      }
+    },
+    "run-android": {
+      "executor": "nx:run-script",
+      "options": {
+        "script": "android"
+      }
+    },
+        "build": {
+            "executor": "@nx/expo:build",
+            "options": {}
+        },
+        "build-android": {
+            "executor": "@nx/expo:build-android",
+            "options": {}
+        },
+        "build-ios": {
+            "executor": "@nx/expo:build-ios",
+            "options": {}
+        },
+        "build-web": {
+            "executor": "@nx/expo:build-web",
+            "options": {}
+        },
+        "prebuild": {
+            "executor": "@nx/expo:prebuild",
+            "options": {}
+        },
+        "install": {
+            "executor": "@nx/expo:install",
+            "options": {}
+        },
+        "lint": {
+            "executor": "@nx/eslint:lint",
+            "outputs": ["{options.outputFile}"],
+            "options": {
+                "lintFilePatterns": ["apps/expo/**/*.{ts,tsx,js,jsx}"]
+            }
+        },
+        "test": {
+            "executor": "@nx/jest:jest",
+            "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+            "options": {
+                "jestConfig": "apps/expo/jest.config.ts",
+                "passWithNoTests": true
+            }
+        }
+    },
+    "tags": ["type:apps", "platform:mobile"]
+}

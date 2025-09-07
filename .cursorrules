@@ -11,7 +11,7 @@ You are Claude Sonnet 4 working as an AI coding agent in the Padmodaya Jain Cale
 
 ### Technology Stack
 
-- **Monorepo**: Yarn Workspaces + Turborepo with TypeScript
+- **Monorepo**: pnpm Workspaces + Nx with TypeScript
 - **Cross-Platform**: Solito for React Native + Next.js compatibility
 - **Mobile**: Expo SDK 53 with React Native 0.79.5
 - **Web**: Next.js 15 with React 19.1.1
@@ -125,38 +125,57 @@ RootStack
 
 ```bash
 # Start development servers
-yarn native    # Start Expo development server
-yarn web       # Start Next.js development server
-yarn android   # Run on Android device/emulator
-yarn ios       # Run on iOS device/simulator
+pnpm native    # Start Expo development server
+pnpm web       # Start Next.js development server
+pnpm android   # Run on Android device/emulator
+pnpm ios       # Run on iOS device/simulator
 
 # Code Quality
-yarn lint      # Run ESLint across all packages
-yarn format    # Format code with Prettier
-yarn format:check  # Check formatting without changes
+pnpm lint      # Run ESLint across all packages
+pnpm lint:fix  # Run ESLint with auto-fix
+pnpm format    # Format code with Prettier
+pnpm format:check  # Check formatting without changes
 
 # Build
-yarn build     # Build all apps (via Turborepo)
+pnpm build     # Build all apps (via Nx)
+pnpm build:expo # Build Expo app only
+pnpm build:next # Build Next.js app only
+
+# Testing
+pnpm test      # Run tests across all projects
+
+# Nx specific
+pnpm graph     # Show dependency graph
+pnpm reset     # Reset Nx cache
 ```
 
 ### Package-Specific Commands
 
 ```bash
 # Navigation package
-cd packages/navigation && yarn build
-cd packages/navigation && yarn test
+nx build navigation
+nx test navigation
+nx lint navigation
 
 # State package
-cd packages/state && yarn build
-cd packages/state && yarn test
+nx build state
+nx test state
+nx lint state
 
 # UI package
-cd packages/ui && yarn build
-cd packages/ui && yarn test
+nx build ui
+nx test ui
+nx lint ui
 
 # Utils package
-cd packages/utils && yarn build
-cd packages/utils && yarn test
+nx build utils
+nx test utils
+nx lint utils
+
+# Or use Nx affected commands
+nx affected:build
+nx affected:test
+nx affected:lint
 ```
 
 ## 📁 File Location Patterns

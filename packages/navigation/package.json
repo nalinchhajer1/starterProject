@@ -8,10 +8,11 @@
         "@react-navigation/native": "^7.1.0",
         "@react-navigation/native-stack": "^7.1.0",
         "@react-navigation/stack": "^7.1.0",
-        "features": "*",
-        "state": "*",
-        "ui": "*",
-        "utils": "*"
+        "react-redux": "^9.1.2",
+        "features": "workspace:*",
+        "state": "workspace:*",
+        "ui": "workspace:*",
+        "utils": "workspace:*"
     },
     "peerDependencies": {
         "react": "*",

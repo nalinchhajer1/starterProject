@@ -1,0 +1,12 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "outDir": "../../dist/out-tsc",
+        "declaration": true,
+        "lib": ["es2015", "dom", "dom.iterable"],
+        "skipLibCheck": true
+    },
+    "include": ["**/*.ts", "**/*.tsx"],
+    "exclude": ["jest.config.ts", "**/*.spec.ts", "**/*.test.ts"]
+}
+

@@ -1,14 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { persistStore, persistReducer, createMigrate } from 'redux-persist';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import createSagaMiddleware from 'redux-saga';
 import rootReducer from './slices';
 import rootSaga from './sagas';
 import { migrations } from './migrations';
+import storage from './Storage';
 
 const persistConfig = {
     key: 'root',
-    storage: AsyncStorage,
+    storage: storage,
     version: 2,
     whitelist: ['appState'],
     migrate: createMigrate(migrations, { debug: false })

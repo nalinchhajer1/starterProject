@@ -28,7 +28,7 @@ starterProject/
 
 ## 🎯 Core Technologies
 
-- **Monorepo Management**: Yarn Workspaces + Turborepo
+- **Monorepo Management**: pnpm Workspaces + Nx
 - **Cross-Platform**: Solito (React Native + Next.js)
 - **State Management**: Redux Toolkit + Redux Saga + Redux Persist
 - **Navigation**: React Navigation v7
@@ -307,18 +307,28 @@ PDDarkTheme; // Dark theme
 
 ```bash
 # Development
-yarn native    # Start Expo development server
-yarn web       # Start Next.js development server
-yarn android   # Run on Android
-yarn ios       # Run on iOS
+pnpm native    # Start Expo development server
+pnpm web       # Start Next.js development server
+pnpm android   # Run on Android
+pnpm ios       # Run on iOS
 
 # Code Quality
-yarn lint      # Run ESLint
-yarn format    # Format code with Prettier
-yarn format:check  # Check formatting
+pnpm lint      # Run ESLint across all projects
+pnpm lint:fix  # Run ESLint with auto-fix
+pnpm format    # Format code with Prettier
+pnpm format:check  # Check formatting
 
 # Build
-yarn build     # Build all apps (via Turborepo)
+pnpm build     # Build all apps (via Nx)
+pnpm build:expo # Build Expo app only
+pnpm build:next # Build Next.js app only
+
+# Testing
+pnpm test      # Run tests across all projects
+
+# Nx specific
+pnpm graph     # Show dependency graph
+pnpm reset     # Reset Nx cache
 ```
 
 ### **Path Mapping** (TypeScript):
@@ -398,11 +408,14 @@ UI Re-render
 
 ## 🛠️ Build & Deployment
 
-### **Turborepo Configuration**:
+### **Nx Configuration**:
 
-- Optimized build caching
+- Optimized build caching with distributed caching
 - Parallel task execution
 - Dependency-aware builds
+- Project graph visualization
+- Code generation and migration tools
+- Advanced linting and testing capabilities
 
 ### **Platform-Specific Builds**:
 

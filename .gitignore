@@ -36,6 +36,11 @@ node_modules/
 npm-debug.log
 yarn-error.log
 
+# pnpm
+.pnpm-debug.log*
+.pnpm-store/
+pnpm-lock.yaml
+
 # BUCK
 buck-out/
 \.buckd/
@@ -69,9 +74,19 @@ web-build/
 apps/expo/ios
 apps/expo/android
 
+# Turborepo (legacy)
 .turbo
-build/**
 
+# Build outputs
+build/**
+dist/
+
+# Nx
+.nx/
+.nx/cache/
+.nx/workspace-data/
+
+# pnpm
 .pnp.*
 .yarn/*
 !.yarn/patches
@@ -79,3 +94,6 @@ build/**
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+# TypeScript
+*.tsbuildinfo

@@ -1,5 +1,5 @@
 // App Selectors - Following existing project pattern
-import { RootState } from 'state/src/slices';
+import { RootState } from 'types';
 
 // Selectors based on existing project
 export const getHaveAskedForLocationFromState = (state: RootState) => {

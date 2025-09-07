@@ -1,0 +1,35 @@
+{
+    "name": "features",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "packages/features",
+    "projectType": "library",
+    "targets": {
+        "build": {
+            "executor": "@nx/js:tsc",
+            "outputs": ["{options.outputPath}"],
+            "options": {
+                "outputPath": "dist/packages/features",
+                "main": "packages/features/index.ts",
+                "tsConfig": "packages/features/tsconfig.lib.json",
+                "assets": ["packages/features/**/*.md"]
+            }
+        },
+        "lint": {
+            "executor": "@nx/eslint:lint",
+            "outputs": ["{options.outputFile}"],
+            "options": {
+                "lintFilePatterns": ["packages/features/**/*.{ts,tsx,js,jsx}"]
+            }
+        },
+        "test": {
+            "executor": "@nx/jest:jest",
+            "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+            "options": {
+                "jestConfig": "packages/features/jest.config.ts",
+                "passWithNoTests": true
+            }
+        }
+    },
+    "tags": ["type:feature", "scope:shared"]
+}
+
