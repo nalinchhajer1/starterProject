@@ -9,9 +9,10 @@
         "lint": "next lint"
     },
     "dependencies": {
-        "features": "*",
-        "firebase-config": "*",
-        "navigation": "*",
+        "features": "workspace:*",
+        "firebase-config": "workspace:*",
+        "localforage": "^1.10.0",
+        "navigation": "workspace:*",
         "next": "^15.4.1",
         "process": "^0.11.10",
         "raf": "^3.4.1",
@@ -22,9 +23,9 @@
         "react-native-safe-area-context": "4.12.0",
         "react-native-screens": "~4.4.0",
         "react-native-web": "~0.19.10",
-        "state": "*",
-        "ui": "*",
-        "utils": "*"
+        "state": "workspace:*",
+        "ui": "workspace:*",
+        "utils": "workspace:*"
     },
     "devDependencies": {
         "@types/node": "17.0.21",

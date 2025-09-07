@@ -1,0 +1,35 @@
+{
+    "name": "ui",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "packages/ui/src",
+    "projectType": "library",
+    "targets": {
+        "build": {
+            "executor": "@nx/js:tsc",
+            "outputs": ["{options.outputPath}"],
+            "options": {
+                "outputPath": "dist/packages/ui",
+                "main": "packages/ui/src/index.ts",
+                "tsConfig": "packages/ui/tsconfig.lib.json",
+                "assets": ["packages/ui/**/*.md", "packages/ui/assets/**/*"]
+            }
+        },
+        "lint": {
+            "executor": "@nx/eslint:lint",
+            "outputs": ["{options.outputFile}"],
+            "options": {
+                "lintFilePatterns": ["packages/ui/**/*.{ts,tsx,js,jsx}"]
+            }
+        },
+        "test": {
+            "executor": "@nx/jest:jest",
+            "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+            "options": {
+                "jestConfig": "packages/ui/jest.config.ts",
+                "passWithNoTests": true
+            }
+        }
+    },
+    "tags": ["type:ui", "scope:shared"]
+}
+

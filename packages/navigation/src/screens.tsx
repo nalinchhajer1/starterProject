@@ -9,9 +9,9 @@ import FontIcon from 'ui/src/FontIcon';
 import Strings, { LanguageContext } from 'utils/src/language';
 import { COLOR } from 'utils/src/colors';
 import { fontSize } from 'utils/src/font';
-import { OtherView } from '../../features/feature-otherview/View/OtherView';
-import { MonthView } from '../../features/feature-monthview/View/MonthView';
-import { DayView } from '../../features/feature-dayview/View/DayView';
+import { OtherView } from 'features/feature-otherview/View/OtherView';
+import { PageTwoView } from 'features/feature-pagetwo/View/PageTwoView';
+import { PageOneView } from 'features/feature-pageone/View/PageOneView';
 
 const Tab = createBottomTabNavigator();
 
@@ -46,15 +46,15 @@ function createOptions(title: string, headerShown = false) {
 
 export const TabNavigation = () => {
     const language = useContext(LanguageContext);
-    const [dayOption, monthOption, otherOption] = useMemo(() => {
+    const [oneOption, twoOption, otherOption] = useMemo(() => {
         // Force re-computation when language changes by accessing Strings
-        return [createOptions(Strings.DAY, false), createOptions(Strings.MONTH, false), createOptions(Strings.OTHER, true)];
+        return [createOptions(Strings.ONE, false), createOptions(Strings.TWO, false), createOptions(Strings.OTHER, true)];
     }, [language]);
 
     return (
-        <Tab.Navigator screenOptions={TabNavigationConfig} initialRouteName={NAVIGATION_VIEW_ID.DAY_VIEW}>
-            <Tab.Screen name={NAVIGATION_VIEW_ID.DAY_VIEW} component={DayView} options={dayOption} />
-            <Tab.Screen name={NAVIGATION_VIEW_ID.MONTH_VIEW} component={MonthView} options={monthOption} />
+        <Tab.Navigator screenOptions={TabNavigationConfig} initialRouteName={NAVIGATION_VIEW_ID.PAGE_ONE_VIEW}>
+            <Tab.Screen name={NAVIGATION_VIEW_ID.PAGE_ONE_VIEW} component={PageOneView} options={oneOption} />
+            <Tab.Screen name={NAVIGATION_VIEW_ID.PAGE_TWO_VIEW} component={PageTwoView} options={twoOption} />
             <Tab.Screen name={NAVIGATION_VIEW_ID.OTHER_VIEW} component={OtherView} options={otherOption} />
         </Tab.Navigator>
     );

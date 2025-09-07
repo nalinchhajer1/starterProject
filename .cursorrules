@@ -3,22 +3,21 @@ description:
 globs: 
 alwaysApply: true
 ---
-# Padmodaya Jain Calendar - Cursor Rules
+# Starter Project - Cursor Rules
 
-You are Claude Sonnet 4 working as an AI coding agent in the Padmodaya Jain Calendar workspace. This is a Solito-based monorepo with React Native (Expo) and Next.js applications focused on Jain calendar functionality, religious events, and cross-platform mobile/web development.
+You are Claude Sonnet 4 working as an AI coding agent in the Starter Project workspace. This is a Solito-based monorepo with React Native (Expo) and Next.js applications focused on cross-platform mobile/web development with a tab-based navigation structure.
 
 ## 🏗️ Workspace Architecture
 
 ### Technology Stack
 
-- **Monorepo**: Yarn Workspaces + Turborepo with TypeScript
+- **Monorepo**: pnpm Workspaces + Nx with TypeScript
 - **Cross-Platform**: Solito for React Native + Next.js compatibility
 - **Mobile**: Expo SDK 53 with React Native 0.79.5
 - **Web**: Next.js 15 with React 19.1.1
 - **State Management**: Redux Toolkit + Redux Saga + Redux Persist
 - **Navigation**: React Navigation v7 with type-safe navigation
 - **UI**: React Native StyleSheet + CSS (web) with custom theming
-- **Firebase**: Analytics, Crashlytics, Messaging, Remote Config
 - **Architecture**: Feature-based packages with shared business logic
 
 ### Project Structure
@@ -41,33 +40,32 @@ starterProject/
 │   ├── state/              # Redux state management
 │   ├── ui/                 # UI components & theming
 │   ├── utils/              # Utility functions & helpers
-│   └── firebase/           # Firebase configuration
 ├── package.json            # Root package configuration
-├── turbo.json             # Turborepo configuration
+├── nx.json                 # Nx configuration
 ├── tsconfig.json          # TypeScript path mapping
 └── .prettierrc            # Code formatting rules
 ```
 
 ## 🎯 Core Domain Knowledge
 
-### Jain Calendar Application Purpose
+### Starter Project Application Purpose
 
-The Padmodaya Jain Calendar is a comprehensive religious calendar application for the Jain community. Key features:
+The Starter Project is a comprehensive cross-platform application template. Key features:
 
-1. **Calendar Views**: Day, Month, and Year views with Jain-specific events
-2. **Religious Events**: Tithi, Jain Parv, Chogadiya, and other religious observances
-3. **Audio Content**: Pachkkan Audio and Manglik Audio for religious teachings
-4. **Location Services**: Location-based calendar calculations and settings
+1. **Tab Navigation**: Three main tabs with PageOne, PageTwo, and Other views
+2. **Cross-Platform**: Native mobile (iOS/Android) and web applications
+3. **Feature-Based Architecture**: Modular feature structure for easy development
+4. **State Management**: Redux-based state management with persistence
 5. **Multi-language Support**: English and Hindi localization
-6. **Cross-Platform**: Native mobile (iOS/Android) and web applications
+6. **Modern Stack**: Latest React Native, Next.js, and development tools
 
 ### Key Business Logic
 
-- **Calendar Calculations**: Jain calendar algorithms for dates, tithis, and religious events
-- **Location-based Services**: Geographic location affects calendar calculations
+- **Tab Navigation**: Three-tab structure with PageOne, PageTwo, and Other views
+- **Feature-Based Development**: Modular architecture for easy feature addition
 - **Theme System**: Light/dark theme support with consistent color schemes
 - **State Persistence**: User preferences and settings are persisted across sessions
-- **Audio Integration**: Religious audio content with playback controls
+- **Cross-Platform Compatibility**: Shared codebase for mobile and web platforms
 - **Navigation Hierarchy**: Tab-based navigation with modal overlays for settings
 
 ### Navigation Structure
@@ -75,19 +73,17 @@ The Padmodaya Jain Calendar is a comprehensive religious calendar application fo
 ```
 RootStack
 ├── Tab Navigation (Bottom Tabs)
-│   ├── Day View - Daily calendar with events
-│   ├── Month View - Monthly calendar overview
-│   └── Other View - Additional features
+│   ├── PageOne View - First tab content
+│   ├── PageTwo View - Second tab content
+│   └── Other View - Third tab content
 ├── Modal Screens
 │   ├── Settings - App configuration
-│   └── Select Location - Location selection
+│   └── Three View - Additional features
 └── Stack Screens
-    ├── Tithi View - Tithi calculations
-    ├── Jain Parv - Religious festivals
-    ├── Chogadiya - Auspicious times
-    ├── Pachkkan Audio - Audio content
-    ├── Manglik Audio - Audio content
-    └── [Various Jain Calendar Views]
+    └── [Future Features]
+        ├── Additional Views
+        ├── Feature Screens
+        └── [Custom Views]
 ```
 
 ## 🛠️ Development Guidelines
@@ -125,38 +121,57 @@ RootStack
 
 ```bash
 # Start development servers
-yarn native    # Start Expo development server
-yarn web       # Start Next.js development server
-yarn android   # Run on Android device/emulator
-yarn ios       # Run on iOS device/simulator
+pnpm native    # Start Expo development server
+pnpm web       # Start Next.js development server
+pnpm android   # Run on Android device/emulator
+pnpm ios       # Run on iOS device/simulator
 
 # Code Quality
-yarn lint      # Run ESLint across all packages
-yarn format    # Format code with Prettier
-yarn format:check  # Check formatting without changes
+pnpm lint      # Run ESLint across all packages
+pnpm lint:fix  # Run ESLint with auto-fix
+pnpm format    # Format code with Prettier
+pnpm format:check  # Check formatting without changes
 
 # Build
-yarn build     # Build all apps (via Turborepo)
+pnpm build     # Build all apps (via Nx)
+pnpm build:expo # Build Expo app only
+pnpm build:next # Build Next.js app only
+
+# Testing
+pnpm test      # Run tests across all projects
+
+# Nx specific
+pnpm graph     # Show dependency graph
+pnpm reset     # Reset Nx cache
 ```
 
 ### Package-Specific Commands
 
 ```bash
 # Navigation package
-cd packages/navigation && yarn build
-cd packages/navigation && yarn test
+nx build navigation
+nx test navigation
+nx lint navigation
 
 # State package
-cd packages/state && yarn build
-cd packages/state && yarn test
+nx build state
+nx test state
+nx lint state
 
 # UI package
-cd packages/ui && yarn build
-cd packages/ui && yarn test
+nx build ui
+nx test ui
+nx lint ui
 
 # Utils package
-cd packages/utils && yarn build
-cd packages/utils && yarn test
+nx build utils
+nx test utils
+nx lint utils
+
+# Or use Nx affected commands
+nx affected:build
+nx affected:test
+nx affected:lint
 ```
 
 ## 📁 File Location Patterns
@@ -274,10 +289,10 @@ features/
 8. **Test on both mobile and web platforms**
 
 ### Feature Naming Convention
-- **Feature folders**: `feature-[name]` (e.g., `feature-dayview`)
-- **Redux files**: `[Feature][Type].ts` (e.g., `DayActions.ts`, `DaySlices.ts`)
-- **Components**: `[FeatureName].tsx` (e.g., `DayView.tsx`)
-- **Styles**: `[FeatureName].styles.ts` (e.g., `DayView.styles.ts`)
+- **Feature folders**: `feature-[name]` (e.g., `feature-pageone`)
+- **Redux files**: `[Feature][Type].ts` (e.g., `PageOneActions.ts`, `PageOneSlices.ts`)
+- **Components**: `[FeatureName].tsx` (e.g., `PageOneView.tsx`)
+- **Styles**: `[FeatureName].styles.ts` (e.g., `PageOneView.styles.ts`)
 
 ### State Management Implementation
 
@@ -354,14 +369,14 @@ features/
 
 - **Mobile**: Expo modules, native device features, app store deployment
 - **Web**: Next.js SSR/SSG, SEO optimization, web deployment
-- **Location Services**: Geographic location for calendar calculations
-- **Audio**: Audio playback for religious content
+- **Location Services**: Geographic location services
+- **Audio**: Audio playback capabilities
 
 ### External Services
 
-- **Calendar APIs**: Jain calendar calculation services
+- **External APIs**: Third-party services and integrations
 - **Location APIs**: Geographic location services
-- **Audio Services**: Religious audio content delivery
+- **Audio Services**: Audio content delivery
 
 ## 📚 Documentation References
 
@@ -378,7 +393,7 @@ features/
 ### Communication Style
 
 - **Cross-Platform Aware**: Always consider both mobile and web implications
-- **Religious Context**: Understand the Jain calendar and religious significance
+- **Template Context**: Understand this is a starter template for cross-platform development
 - **Technical but Clear**: Explain complex concepts in understandable terms
 - **Solution-Oriented**: Focus on practical solutions and implementation
 - **Detail-Oriented**: Provide comprehensive information and examples
@@ -400,7 +415,7 @@ features/
 - **Maintainability**: Create modular, reusable components and functions
 - **Performance**: Optimize for mobile performance and web loading
 - **Accessibility**: Ensure all users can use the application effectively
-- **Religious Accuracy**: Maintain accuracy in Jain calendar calculations and content
+- **Template Accuracy**: Maintain accuracy in starter template functionality and examples
 
 ## 🔍 Key Considerations
 
@@ -437,8 +452,8 @@ features/
 - Support English and Hindi languages
 - Use proper localization utilities
 - Test language switching functionality
-- Maintain religious terminology accuracy
+- Maintain template terminology accuracy
 
 ---
 
-**Remember**: Always prioritize cross-platform compatibility, religious accuracy, and user experience. When in doubt, ask clarifying questions and provide multiple solution options with their trade-offs. Consider both mobile and web implications in every decision.
+**Remember**: Always prioritize cross-platform compatibility, template accuracy, and user experience. When in doubt, ask clarifying questions and provide multiple solution options with their trade-offs. Consider both mobile and web implications in every decision.

@@ -1,5 +1,5 @@
 // View Selectors - Following existing project pattern
-import { RootState } from 'state/src/slices';
+import { RootState } from 'types';
 
 // View-specific selectors
 export const getSelectedDateFromState = (state: RootState) => {

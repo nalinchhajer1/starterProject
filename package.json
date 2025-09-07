@@ -1,11 +1,15 @@
 {
-    "name": "solito-blank",
+    "name": "padmodaya-jain-calendar",
     "private": true,
-    "workspaces": [
-        "apps/*",
-        "packages/*"
-    ],
     "devDependencies": {
+        "@nx/eslint": "^20.0.0",
+        "@nx/eslint-plugin": "^20.8.2",
+        "@nx/expo": "^20.0.0",
+        "@nx/jest": "^20.0.0",
+        "@nx/js": "^20.0.0",
+        "@nx/next": "^20.0.0",
+        "@nx/react": "^20.0.0",
+        "@nx/workspace": "^20.0.0",
         "@types/react": "^18.2.21",
         "eslint": "^9.35.0",
         "eslint-config-expo": "~9.2.0",
@@ -13,21 +17,28 @@
         "eslint-import-resolver-typescript": "^4.4.4",
         "eslint-plugin-prettier": "^5.5.4",
         "expo": "^53.0.0",
+        "nx": "^20.0.0",
         "prettier": "^3.6.2",
-        "turbo": "^2.4.4",
         "typescript": "^5.2.2"
     },
     "scripts": {
-        "native": "cd apps/expo && yarn start",
-        "web": "cd apps/next && yarn next",
-        "android": "cd apps/expo && yarn android",
-        "ios": "cd apps/expo && yarn ios",
-        "expo:web": "cd apps/expo && yarn web",
-        "lint": "expo lint",
+        "native": "nx start expo-app",
+        "web": "nx serve next-app",
+        "android": "nx run expo-app:run-android",
+        "ios": "nx run expo-app:run-ios",
+        "expo:web": "nx start expo-app --web",
+        "build": "nx run-many --target=build --all",
+        "build:expo": "nx build expo-app",
+        "build:next": "nx build next-app",
+        "lint": "nx run-many --target=lint --all",
+        "lint:fix": "nx run-many --target=lint --all --fix",
         "format": "prettier --write .",
-        "format:check": "prettier --check ."
+        "format:check": "prettier --check .",
+        "test": "nx run-many --target=test --all",
+        "graph": "nx graph",
+        "reset": "nx reset"
     },
-    "packageManager": "yarn@4.9.4",
+    "packageManager": "pnpm@9.0.0",
     "eslintConfig": {
         "extends": "next",
         "settings": {

@@ -3,13 +3,13 @@
 import { Suspense, lazy } from 'react';
 
 // Lazy load components for optimal tree shaking
-const DayView = lazy(() => import('../../../packages/features/feature-dayview/View/DayView'));
-const LoadingView = lazy(() => import('../../../packages/features/feature-loading/View/LoadingView'));
+const PageOneView = lazy(() => import('features/feature-pageone/View/PageOneView'));
+const LoadingView = lazy(() => import('features/feature-loading/View/LoadingView'));
 
 export default function Page() {
     return (
-        <Suspense fallback={<LoadingView message="Loading Day View..." />}>
-            <DayView />
+        <Suspense fallback={<LoadingView message="Loading..." />}>
+            <PageOneView />
         </Suspense>
     );
 }

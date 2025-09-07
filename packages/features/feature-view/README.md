@@ -2,7 +2,7 @@
 
 ## Overview
 
-View feature for the Jain Calendar application - handles view-level state and functionality.
+View feature for the Starter Project - handles view-level state and functionality.
 
 ## Structure
 

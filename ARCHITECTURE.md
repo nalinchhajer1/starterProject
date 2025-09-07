@@ -1,8 +1,8 @@
-# Padmodaya Jain Calendar - Monorepo Architecture
+# Starter Project - Monorepo Architecture
 
 ## 📋 Overview
 
-This is a **Solito-based monorepo** for a Jain Calendar application that supports both **React Native (Expo)** and **Next.js (Web)** platforms. The architecture follows a **shared codebase approach** with platform-specific optimizations.
+This is a **Solito-based monorepo** for a cross-platform starter application that supports both **React Native (Expo)** and **Next.js (Web)** platforms. The architecture follows a **shared codebase approach** with platform-specific optimizations and a three-tab navigation structure.
 
 ## 🏗️ Monorepo Structure
 
@@ -20,7 +20,7 @@ starterProject/
 │   ├── utils/              # Utility functions & helpers
 │   └── firebase/           # Firebase configuration
 ├── package.json            # Root package configuration
-├── turbo.json             # Turborepo configuration
+├── nx.json                 # Nx configuration
 ├── tsconfig.json          # TypeScript configuration
 ├── eslint.config.js       # ESLint configuration
 └── .prettierrc            # Prettier configuration
@@ -28,7 +28,7 @@ starterProject/
 
 ## 🎯 Core Technologies
 
-- **Monorepo Management**: Yarn Workspaces + Turborepo
+- **Monorepo Management**: pnpm Workspaces + Nx
 - **Cross-Platform**: Solito (React Native + Next.js)
 - **State Management**: Redux Toolkit + Redux Saga + Redux Persist
 - **Navigation**: React Navigation v7
@@ -132,17 +132,17 @@ features/
 ```
 RootStack
 ├── Tab (Bottom Tabs)
-│   ├── Day View
-│   ├── Month View
-│   └── Other View
+│   ├── PageOne View - First tab content
+│   ├── PageTwo View - Second tab content
+│   └── Other View - Third tab content
 ├── Modal Screens
-│   ├── Settings
-│   └── Select Location
+│   ├── Settings - App configuration
+│   └── Three View - Additional features
 └── Stack Screens
-    ├── Tithi View
-    ├── Jain Parv
-    ├── Chogadiya
-    └── [Various Jain Calendar Views]
+    └── [Future Features]
+        ├── Additional Views
+        ├── Feature Screens
+        └── [Custom Views]
 ```
 
 ### 4. **`packages/state`** - State Management
@@ -296,7 +296,7 @@ PDDarkTheme; // Dark theme
 ```typescript
 <StylesProvider>
     <Suspense fallback={<LoadingView />}>
-        <DayView />
+        <PageOneView />
     </Suspense>
 </StylesProvider>
 ```
@@ -307,18 +307,28 @@ PDDarkTheme; // Dark theme
 
 ```bash
 # Development
-yarn native    # Start Expo development server
-yarn web       # Start Next.js development server
-yarn android   # Run on Android
-yarn ios       # Run on iOS
+pnpm native    # Start Expo development server
+pnpm web       # Start Next.js development server
+pnpm android   # Run on Android
+pnpm ios       # Run on iOS
 
 # Code Quality
-yarn lint      # Run ESLint
-yarn format    # Format code with Prettier
-yarn format:check  # Check formatting
+pnpm lint      # Run ESLint across all projects
+pnpm lint:fix  # Run ESLint with auto-fix
+pnpm format    # Format code with Prettier
+pnpm format:check  # Check formatting
 
 # Build
-yarn build     # Build all apps (via Turborepo)
+pnpm build     # Build all apps (via Nx)
+pnpm build:expo # Build Expo app only
+pnpm build:next # Build Next.js app only
+
+# Testing
+pnpm test      # Run tests across all projects
+
+# Nx specific
+pnpm graph     # Show dependency graph
+pnpm reset     # Reset Nx cache
 ```
 
 ### **Path Mapping** (TypeScript):
@@ -398,11 +408,14 @@ UI Re-render
 
 ## 🛠️ Build & Deployment
 
-### **Turborepo Configuration**:
+### **Nx Configuration**:
 
-- Optimized build caching
+- Optimized build caching with distributed caching
 - Parallel task execution
 - Dependency-aware builds
+- Project graph visualization
+- Code generation and migration tools
+- Advanced linting and testing capabilities
 
 ### **Platform-Specific Builds**:
 
@@ -411,14 +424,14 @@ UI Re-render
 
 ## 📱 Application Features
 
-Based on the navigation structure, this Jain Calendar app includes:
+Based on the navigation structure, this Starter Project includes:
 
-- **Calendar Views**: Day, Month, Year views
-- **Jain Events**: Tithi, Jain Parv, Chogadiya
-- **Audio Content**: Pachkkan Audio, Manglik Audio
-- **Settings**: Theme, location selection
-- **Developer Info**: App developer, sponsors
+- **Tab Navigation**: Three main tabs with PageOne, PageTwo, and Other views
+- **Settings**: App configuration and preferences
+- **Additional Views**: Three View for extended functionality
 - **Localization**: English/Hindi support
+- **Theme System**: Light/dark theme support
+- **Cross-Platform**: Mobile and web compatibility
 
 ## 🔧 Adding New Features
 
@@ -459,16 +472,16 @@ Based on the navigation structure, this Jain Calendar app includes:
 
 ### **Feature Naming Convention**
 
-- Feature folders: `feature-[name]` (e.g., `feature-dayview`)
-- Redux files: `[Feature][Type].ts` (e.g., `DayActions.ts`, `DaySlices.ts`)
-- Components: `[FeatureName].tsx` (e.g., `DayView.tsx`)
-- Styles: `[FeatureName].styles.ts` (e.g., `DayView.styles.ts`)
+- Feature folders: `feature-[name]` (e.g., `feature-pageone`)
+- Redux files: `[Feature][Type].ts` (e.g., `PageOneActions.ts`, `PageOneSlices.ts`)
+- Components: `[FeatureName].tsx` (e.g., `PageOneView.tsx`)
+- Styles: `[FeatureName].styles.ts` (e.g., `PageOneView.styles.ts`)
 
 ## 🔍 Key Benefits of This Architecture
 
 1. **Code Reusability**: Shared business logic across platforms
 2. **Type Safety**: Full TypeScript support with strict mode
-3. **Performance**: Optimized builds with Turborepo
+3. **Performance**: Optimized builds with Nx
 4. **Maintainability**: Clear package separation and feature-based organization
 5. **Scalability**: Easy to add new features with consistent structure
 6. **Developer Experience**: Hot reload, linting, formatting
@@ -484,4 +497,4 @@ Based on the navigation structure, this Jain Calendar app includes:
 - **Navigation**: Uses React Navigation v7 with type-safe navigation
 - **Theming**: Supports light/dark themes with consistent color system
 
-This architecture provides a solid foundation for a cross-platform Jain Calendar application with excellent developer experience and maintainability.
+This architecture provides a solid foundation for a cross-platform starter application with excellent developer experience and maintainability.

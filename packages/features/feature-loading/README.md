@@ -2,7 +2,7 @@
 
 ## Overview
 
-Loading View feature for the Jain Calendar application.
+Loading View feature for the Starter Project.
 
 ## Structure
 

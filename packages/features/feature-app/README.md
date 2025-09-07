@@ -2,7 +2,7 @@
 
 ## Overview
 
-App feature for the Jain Calendar application - handles app-level state and functionality.
+App feature for the Starter Project - handles app-level state and functionality.
 
 ## Structure
 
