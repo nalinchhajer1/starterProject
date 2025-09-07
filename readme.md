@@ -31,15 +31,14 @@ For more, see the [compatibility docs](https://solito.dev/compatibility).
 ## 🗂 Folder layout
 
 - `apps` entry points for each app
-
-  - `expo`
-  - `next`
+    - `expo`
+    - `next`
 
 - `packages` shared packages across apps
-  - `app` you'll be importing most files from `app/`
-    - `features` (don't use a `screens` folder. organize by feature.)
-    - `provider` (all the providers that wrap the app, and some no-ops for Web.)
-    - `navigation` Next.js has a `pages/` folder. React Native doesn't. This folder contains navigation-related code for RN. You may use it for any navigation code, such as custom links.
+    - `app` you'll be importing most files from `app/`
+        - `features` (don't use a `screens` folder. organize by feature.)
+        - `provider` (all the providers that wrap the app, and some no-ops for Web.)
+        - `navigation` Next.js has a `pages/` folder. React Native doesn't. This folder contains navigation-related code for RN. You may use it for any navigation code, such as custom links.
 
 You can add other folders inside of `packages/` if you know what you're doing and have a good reason to.
 
@@ -48,13 +47,13 @@ You can add other folders inside of `packages/` if you know what you're doing an
 - Install dependencies: `yarn`
 
 - Next.js local dev: `yarn web`
-  - Runs `yarn next`
+    - Runs `yarn next`
 - Expo local dev:
-  - First, build a dev client onto your device or simulator
-    - `cd apps/expo`
-    - Then, either `expo run:ios`, or `eas build`
-  - After building the dev client, from the root of the monorepo...
-    - `yarn native` (This runs `expo start --dev-client`)
+    - First, build a dev client onto your device or simulator
+        - `cd apps/expo`
+        - Then, either `expo run:ios`, or `eas build`
+    - After building the dev client, from the root of the monorepo...
+        - `yarn native` (This runs `expo start --dev-client`)
 
 ## 🆕 Add new dependencies
 

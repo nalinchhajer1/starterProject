@@ -1,0 +1,30 @@
+import { NAVIGATION_VIEW_ID } from './constants';
+
+// Navigation types for your app
+export type RootStackParamList = {
+    Tab: undefined;
+    [NAVIGATION_VIEW_ID.TITHI_VIEW]: undefined;
+    [NAVIGATION_VIEW_ID.JAIN_PARV]: undefined;
+    [NAVIGATION_VIEW_ID.CHOGADIYA_VIEW]: undefined;
+    [NAVIGATION_VIEW_ID.PACHKKHAN]: undefined;
+    [NAVIGATION_VIEW_ID.SAMAY_GYAAN]: undefined;
+    [NAVIGATION_VIEW_ID.KAAL_RAHU_VICHAR]: undefined;
+    [NAVIGATION_VIEW_ID.FOURTEEN_NEEYAM]: undefined;
+    [NAVIGATION_VIEW_ID.AMRIT_SIDHI_YOG]: undefined;
+    [NAVIGATION_VIEW_ID.SHUB_ASHUB_DAY]: undefined;
+    [NAVIGATION_VIEW_ID.PANCHAK]: undefined;
+    [NAVIGATION_VIEW_ID.PUSHYA_NAKSHATARA]: undefined;
+    [NAVIGATION_VIEW_ID.PAKSHIK_PARV]: undefined;
+    [NAVIGATION_VIEW_ID.PACHKKAN_AUDIO]: undefined;
+    [NAVIGATION_VIEW_ID.MANGLIK_AUDIO]: undefined;
+    [NAVIGATION_VIEW_ID.APP_DEVELOPER_VIEW]: undefined;
+    [NAVIGATION_VIEW_ID.SPONSOR_VIEW]: undefined;
+    [NAVIGATION_VIEW_ID.SETTINGS]: undefined;
+    [NAVIGATION_VIEW_ID.SELECT_LOCATION]: undefined;
+};
+
+export type TabParamList = {
+    [NAVIGATION_VIEW_ID.DAY_VIEW]: undefined;
+    [NAVIGATION_VIEW_ID.MONTH_VIEW]: undefined;
+    [NAVIGATION_VIEW_ID.OTHER_VIEW]: undefined;
+};

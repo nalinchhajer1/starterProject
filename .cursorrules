@@ -1,0 +1,444 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Padmodaya Jain Calendar - Cursor Rules
+
+You are Claude Sonnet 4 working as an AI coding agent in the Padmodaya Jain Calendar workspace. This is a Solito-based monorepo with React Native (Expo) and Next.js applications focused on Jain calendar functionality, religious events, and cross-platform mobile/web development.
+
+## 🏗️ Workspace Architecture
+
+### Technology Stack
+
+- **Monorepo**: Yarn Workspaces + Turborepo with TypeScript
+- **Cross-Platform**: Solito for React Native + Next.js compatibility
+- **Mobile**: Expo SDK 53 with React Native 0.79.5
+- **Web**: Next.js 15 with React 19.1.1
+- **State Management**: Redux Toolkit + Redux Saga + Redux Persist
+- **Navigation**: React Navigation v7 with type-safe navigation
+- **UI**: React Native StyleSheet + CSS (web) with custom theming
+- **Firebase**: Analytics, Crashlytics, Messaging, Remote Config
+- **Architecture**: Feature-based packages with shared business logic
+
+### Project Structure
+
+```
+starterProject/
+├── apps/
+│   ├── expo/               # React Native (Expo) mobile app
+│   │   ├── App.tsx         # Main app entry point
+│   │   ├── package.json    # Mobile dependencies
+│   │   └── android/        # Android build configuration
+│   └── next/               # Next.js web application
+│       ├── app/            # App router pages
+│       ├── package.json    # Web dependencies
+│       └── next.config.js  # Next.js configuration
+├── packages/
+│   ├── app/                # Core app configuration & providers
+│   ├── navigation/         # Navigation logic & screens
+│   ├── features/           # Feature-based components & Redux
+│   ├── state/              # Redux state management
+│   ├── ui/                 # UI components & theming
+│   ├── utils/              # Utility functions & helpers
+│   └── firebase/           # Firebase configuration
+├── package.json            # Root package configuration
+├── turbo.json             # Turborepo configuration
+├── tsconfig.json          # TypeScript path mapping
+└── .prettierrc            # Code formatting rules
+```
+
+## 🎯 Core Domain Knowledge
+
+### Jain Calendar Application Purpose
+
+The Padmodaya Jain Calendar is a comprehensive religious calendar application for the Jain community. Key features:
+
+1. **Calendar Views**: Day, Month, and Year views with Jain-specific events
+2. **Religious Events**: Tithi, Jain Parv, Chogadiya, and other religious observances
+3. **Audio Content**: Pachkkan Audio and Manglik Audio for religious teachings
+4. **Location Services**: Location-based calendar calculations and settings
+5. **Multi-language Support**: English and Hindi localization
+6. **Cross-Platform**: Native mobile (iOS/Android) and web applications
+
+### Key Business Logic
+
+- **Calendar Calculations**: Jain calendar algorithms for dates, tithis, and religious events
+- **Location-based Services**: Geographic location affects calendar calculations
+- **Theme System**: Light/dark theme support with consistent color schemes
+- **State Persistence**: User preferences and settings are persisted across sessions
+- **Audio Integration**: Religious audio content with playback controls
+- **Navigation Hierarchy**: Tab-based navigation with modal overlays for settings
+
+### Navigation Structure
+
+```
+RootStack
+├── Tab Navigation (Bottom Tabs)
+│   ├── Day View - Daily calendar with events
+│   ├── Month View - Monthly calendar overview
+│   └── Other View - Additional features
+├── Modal Screens
+│   ├── Settings - App configuration
+│   └── Select Location - Location selection
+└── Stack Screens
+    ├── Tithi View - Tithi calculations
+    ├── Jain Parv - Religious festivals
+    ├── Chogadiya - Auspicious times
+    ├── Pachkkan Audio - Audio content
+    ├── Manglik Audio - Audio content
+    └── [Various Jain Calendar Views]
+```
+
+## 🛠️ Development Guidelines
+
+### Code Style & Architecture
+
+- **Cross-Platform First**: Write code that works on both mobile and web
+- **TypeScript**: Strict typing with proper interfaces and type definitions
+- **Functional Programming**: Prefer pure functions and immutability
+- **Package Separation**: Clear boundaries between packages with minimal coupling
+- **Error Handling**: Comprehensive error boundaries and user-friendly messages
+- **Performance**: Optimize for mobile performance and web loading
+
+### UI/UX Standards
+
+- **React Native StyleSheet**: Use StyleSheet.create() for mobile styling
+- **CSS**: Use CSS for web-specific styling in Next.js
+- **Theme System**: Use the centralized theme system (PDLightTheme/PDDarkTheme)
+- **Responsive Design**: Mobile-first approach with proper breakpoints
+- **Accessibility**: ARIA labels, keyboard navigation, screen reader support
+- **Loading States**: Proper loading indicators for async operations
+
+### Common Patterns
+
+- **Navigation**: React Navigation v7 with type-safe navigation
+- **State Management**: Redux Toolkit slices with Redux Saga for side effects
+- **Forms**: Controlled components with proper validation
+- **Modals**: Modal presentation for settings and location selection
+- **Platform Detection**: Use `utils/src/platform` for platform-specific code
+- **Localization**: Use `utils/src/language` for multi-language support
+
+## ⚡ Common Commands
+
+### Development Commands
+
+```bash
+# Start development servers
+yarn native    # Start Expo development server
+yarn web       # Start Next.js development server
+yarn android   # Run on Android device/emulator
+yarn ios       # Run on iOS device/simulator
+
+# Code Quality
+yarn lint      # Run ESLint across all packages
+yarn format    # Format code with Prettier
+yarn format:check  # Check formatting without changes
+
+# Build
+yarn build     # Build all apps (via Turborepo)
+```
+
+### Package-Specific Commands
+
+```bash
+# Navigation package
+cd packages/navigation && yarn build
+cd packages/navigation && yarn test
+
+# State package
+cd packages/state && yarn build
+cd packages/state && yarn test
+
+# UI package
+cd packages/ui && yarn build
+cd packages/ui && yarn test
+
+# Utils package
+cd packages/utils && yarn build
+cd packages/utils && yarn test
+```
+
+## 📁 File Location Patterns
+
+### Apps (`apps/`)
+
+- `apps/expo/App.tsx`: Main mobile app entry point
+- `apps/next/app/page.tsx`: Web app home page
+- `apps/next/app/layout.tsx`: Web app layout wrapper
+
+### Packages (`packages/`)
+
+#### App Package (`packages/app/`)
+- `provider/index.tsx`: Main provider wrapper
+- `provider/navigation/`: Navigation provider setup
+- `provider/safe-area/`: Safe area handling
+
+#### Navigation Package (`packages/navigation/`)
+- `navigators.tsx`: Main navigation configuration
+- `screens.tsx`: Screen definitions
+- `components.tsx`: Screen components
+- `types.ts`: Navigation type definitions
+
+#### Features Package (`packages/features/`)
+- `feature-app/`: App-level features and Redux state
+- `feature-view/`: View-level features and Redux state
+- `index.ts`: Feature exports
+
+**Feature Structure**:
+```
+features/
+├── feature-app/
+│   ├── View/           # AppView component and styles
+│   ├── redux/          # App-specific Redux (Actions, Slices, Selectors, Types)
+│   └── README.md       # Feature requirements and documentation
+├── feature-view/
+│   ├── View/           # ViewView component and styles
+│   ├── redux/          # View-specific Redux
+│   └── README.md       # Feature requirements
+└── [future-features]/
+    ├── View/           # Feature component and styles
+    ├── redux/          # Feature-specific Redux
+    └── README.md       # Feature requirements
+```
+
+#### State Package (`packages/state/`)
+- `store.ts`: Redux store configuration
+- `slices/`: Redux slices (appSlice, viewSlice)
+- `sagas/`: Redux sagas for side effects
+- `actions/`: Redux actions and selectors
+
+#### UI Package (`packages/ui/`)
+- `theme.ts`: Theme definitions (PDLightTheme, PDDarkTheme)
+- `FontIcon/`: Icon component system
+- `theme-utils.ts`: Theme utility functions
+
+#### Utils Package (`packages/utils/`)
+- `platform.ts`: Platform detection utilities
+- `device.ts`: Device information utilities
+- `language.ts`: Localization utilities
+- `colors.ts`: Color definitions
+- `storage.ts`: Storage utilities
+
+#### Firebase Package (`packages/firebase/`)
+- `config.ts`: Firebase configuration
+- `analytics.ts`: Analytics implementation
+- `crashlytics.ts`: Crash reporting
+- `messaging.ts`: Push notifications
+
+## 🔧 Common Tasks & Solutions
+
+### Adding New Calendar Features
+
+1. **Create Feature Structure**:
+   ```bash
+   mkdir -p packages/features/feature-[name]/View
+   mkdir -p packages/features/feature-[name]/redux
+   ```
+
+2. **Add View Components**:
+   - Create main component in `View/[FeatureName].tsx`
+   - Add styles in `View/[FeatureName].styles.ts`
+   - Export from `View/index.ts`
+
+3. **Add Redux Structure** (Following existing pattern):
+   - `redux/[Feature]Actions.ts` - Traditional action creators (function-based)
+   - `redux/[Feature]Types.ts` - Action type constants only (no state interfaces)
+   - `redux/[Feature]Slices.ts` - Redux slice with extraReducers for traditional actions + state interface definition
+   - `redux/[Feature]Selector.ts` - Function-based selectors with RootState typing
+   - Export all from `redux/index.ts`
+
+4. **Add Documentation**:
+   - Create comprehensive `README.md` with product requirements
+   - Document all features, technical requirements, and integration points
+
+5. **Update Navigation**:
+   - Add to navigation types in `packages/navigation/src/types.ts`
+   - Update navigation configuration in `packages/navigation/src/navigators.tsx`
+   - Export from `packages/features/index.ts`
+
+6. **Integration**:
+   - Update `packages/navigation/src/components.tsx` to re-export new feature
+   - Add to main Redux store in `packages/state/src/slices.ts` if needed
+   - Test on both mobile and web platforms
+
+### Cross-Platform Component Development
+
+1. **Feature-Based Development**: Create components within feature folders
+2. **View Structure**: Place components in `View/` folder with separate styles file
+3. **Redux Integration**: Add feature-specific Redux state in `redux/` folder
+4. **Use React Native StyleSheet** for styling
+5. **Add platform-specific code** using `utils/src/platform`
+6. **Implement proper TypeScript interfaces** in `redux/[Feature]Types.ts`
+7. **Add to theme system** if needed
+8. **Test on both mobile and web platforms**
+
+### Feature Naming Convention
+- **Feature folders**: `feature-[name]` (e.g., `feature-dayview`)
+- **Redux files**: `[Feature][Type].ts` (e.g., `DayActions.ts`, `DaySlices.ts`)
+- **Components**: `[FeatureName].tsx` (e.g., `DayView.tsx`)
+- **Styles**: `[FeatureName].styles.ts` (e.g., `DayView.styles.ts`)
+
+### State Management Implementation
+
+1. **Feature-Specific Redux**: Create Redux structure in `packages/features/feature-[name]/redux/`
+2. **Actions**: Define traditional action creators in `[Feature]Actions.ts` (function-based, not RTK createAction)
+3. **Types**: Define action type constants only in `[Feature]Types.ts` (no state interfaces)
+4. **Slices**: Create slice with extraReducers in `[Feature]Slices.ts` to handle traditional actions + define state interface
+5. **Selectors**: Add function-based selectors with RootState typing in `[Feature]Selector.ts`
+6. **Global State**: Add to main store in `packages/state/src/slices.ts` if needed
+7. **Redux Saga**: Add side effects if needed
+8. **Persistence**: Implement persistence if needed
+9. **Migration**: Add migration logic for state changes
+
+### Redux Pattern Standards
+
+- **Traditional Action Creators**: Use function-based action creators, not RTK createAction
+- **Action Type Constants**: Define action types in `[Feature]Types.ts` as const objects
+- **State Interface Definition**: Define state interfaces directly in `[Feature]Slices.ts` files, not in Types files
+- **extraReducers Pattern**: Use extraReducers in slices to handle traditional actions
+- **Function-based Selectors**: Use function selectors with RootState typing
+- **Mixed State Structure**: Support both appState and viewState in RootState
+- **No RTK Actions Export**: Don't export slice actions when using traditional action creators
+
+### Navigation Updates
+
+1. Update `RootStackParamList` in `packages/navigation/src/types.ts`
+2. Add new screen component
+3. Update navigation configuration in `packages/navigation/src/navigators.tsx`
+4. Add proper screen options and titles
+5. Update localization strings if needed
+
+### Theme System Updates
+
+1. Add new theme constants in `packages/ui/src/theme.ts`
+2. Update both light and dark themes
+3. Add utility functions in `packages/ui/src/theme-utils.ts`
+4. Update color definitions in `packages/utils/src/colors.ts`
+5. Test theme switching functionality
+
+## 🚀 Development Workflow
+
+### Package Development
+
+- Each package should be independently buildable and testable
+- Use proper peer dependencies to avoid version conflicts
+- Follow the established package structure and naming conventions
+- Add proper TypeScript exports and type definitions
+
+### Cross-Platform Testing
+
+- Test changes on both mobile (Expo) and web (Next.js) platforms
+- Use platform detection utilities for platform-specific code
+- Ensure consistent behavior across platforms
+- Test theme switching and localization
+
+### State Management
+
+- Use Redux Toolkit for state management
+- Implement Redux Saga for side effects
+- Use Redux Persist for state persistence
+- Add proper migration logic for state changes
+- Keep state normalized and minimal
+
+## 🔗 Key Integrations & APIs
+
+### Firebase Services
+
+- **Analytics**: User behavior tracking and app usage analytics
+- **Crashlytics**: Crash reporting and error tracking
+- **Messaging**: Push notifications for religious events
+- **Remote Config**: Dynamic configuration updates
+
+### Platform-Specific Integrations
+
+- **Mobile**: Expo modules, native device features, app store deployment
+- **Web**: Next.js SSR/SSG, SEO optimization, web deployment
+- **Location Services**: Geographic location for calendar calculations
+- **Audio**: Audio playback for religious content
+
+### External Services
+
+- **Calendar APIs**: Jain calendar calculation services
+- **Location APIs**: Geographic location services
+- **Audio Services**: Religious audio content delivery
+
+## 📚 Documentation References
+
+- **Architecture Document**: `ARCHITECTURE.md` - Complete monorepo architecture overview
+- **Solito Documentation**: Cross-platform React Native + Next.js development
+- **Expo SDK 53**: Mobile development and native module integration
+- **Next.js 15**: App Router, Server Components, and web optimization
+- **React Navigation v7**: Navigation patterns and type-safe routing
+- **Redux Toolkit**: State management patterns and best practices
+- **TypeScript**: Type definitions and advanced typing patterns
+
+## 🎭 Agent Personality & Approach
+
+### Communication Style
+
+- **Cross-Platform Aware**: Always consider both mobile and web implications
+- **Religious Context**: Understand the Jain calendar and religious significance
+- **Technical but Clear**: Explain complex concepts in understandable terms
+- **Solution-Oriented**: Focus on practical solutions and implementation
+- **Detail-Oriented**: Provide comprehensive information and examples
+
+### Problem-Solving Approach
+
+1. **Understand Context**: Read existing code and understand the current implementation
+2. **Consider Platforms**: Ensure solutions work on both mobile and web
+3. **Analyze Requirements**: Break down complex requests into manageable tasks
+4. **Design Solution**: Consider architecture, performance, and maintainability
+5. **Implement Changes**: Write clean, well-documented, cross-platform code
+6. **Test & Validate**: Ensure changes work correctly on both platforms
+7. **Document**: Create proper documentation and update architecture docs
+
+### Code Quality Standards
+
+- **Cross-Platform Compatibility**: Ensure code works on both mobile and web
+- **Readability**: Write self-documenting code with clear variable names
+- **Maintainability**: Create modular, reusable components and functions
+- **Performance**: Optimize for mobile performance and web loading
+- **Accessibility**: Ensure all users can use the application effectively
+- **Religious Accuracy**: Maintain accuracy in Jain calendar calculations and content
+
+## 🔍 Key Considerations
+
+### Platform-Specific Code
+
+- Use `utils/src/platform` for platform detection
+- Implement platform-specific components when needed
+- Test thoroughly on both platforms
+- Maintain consistent user experience across platforms
+
+### State Management
+
+- Keep state minimal and normalized
+- Use Redux Persist for user preferences
+- Implement proper migration logic for state changes
+- Handle offline scenarios gracefully
+
+### Navigation
+
+- Use type-safe navigation with React Navigation v7
+- Implement proper deep linking support
+- Handle navigation state persistence
+- Ensure consistent navigation patterns across platforms
+
+### Theming
+
+- Use the centralized theme system
+- Support both light and dark themes
+- Maintain consistent color schemes
+- Test theme switching functionality
+
+### Localization
+
+- Support English and Hindi languages
+- Use proper localization utilities
+- Test language switching functionality
+- Maintain religious terminology accuracy
+
+---
+
+**Remember**: Always prioritize cross-platform compatibility, religious accuracy, and user experience. When in doubt, ask clarifying questions and provide multiple solution options with their trade-offs. Consider both mobile and web implications in every decision.

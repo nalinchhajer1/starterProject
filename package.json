@@ -1,37 +1,40 @@
 {
-  "name": "solito-blank",
-  "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
-  "devDependencies": {
-    "@types/react": "^18.2.21",
-    "eslint": "^8.21.0",
-    "expo": "^53.0.0",
-    "turbo": "^2.4.4",
-    "typescript": "^5.2.2"
-  },
-  "scripts": {
-    "native": "cd apps/expo && yarn start",
-    "web": "cd apps/next && yarn next",
-    "android": "cd apps/expo && yarn android",
-    "ios": "cd apps/expo && yarn ios"
-  },
-  "packageManager": "yarn@4.9.4",
-  "eslintConfig": {
-    "extends": "next",
-    "settings": {
-      "next": {
-        "rootDir": "apps/next/"
-      }
+    "name": "solito-blank",
+    "private": true,
+    "workspaces": [
+        "apps/*",
+        "packages/*"
+    ],
+    "devDependencies": {
+        "@types/react": "^18.2.21",
+        "eslint": "^9.35.0",
+        "eslint-config-expo": "~9.2.0",
+        "eslint-config-prettier": "^10.1.8",
+        "eslint-import-resolver-typescript": "^4.4.4",
+        "eslint-plugin-prettier": "^5.5.4",
+        "expo": "^53.0.0",
+        "prettier": "^3.6.2",
+        "turbo": "^2.4.4",
+        "typescript": "^5.2.2"
     },
-    "root": true
-  },
-  "prettier": {
-    "semi": false,
-    "useTabs": false,
-    "tabWidth": 2,
-    "singleQuote": true
-  }
+    "scripts": {
+        "native": "cd apps/expo && yarn start",
+        "web": "cd apps/next && yarn next",
+        "android": "cd apps/expo && yarn android",
+        "ios": "cd apps/expo && yarn ios",
+        "expo:web": "cd apps/expo && yarn web",
+        "lint": "expo lint",
+        "format": "prettier --write .",
+        "format:check": "prettier --check ."
+    },
+    "packageManager": "yarn@4.9.4",
+    "eslintConfig": {
+        "extends": "next",
+        "settings": {
+            "next": {
+                "rootDir": "apps/next/"
+            }
+        },
+        "root": true
+    }
 }

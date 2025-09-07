@@ -1,11 +1,16 @@
 {
-  "compilerOptions": {
-    "strictNullChecks": true,
-    "noUncheckedIndexedAccess": true,
-    "paths": {
-      "app/*": ["./packages/app/*"]
-    },
-    "baseUrl": ".",
-    "jsx": "react-jsx"
-  }
+    "compilerOptions": {
+        "strictNullChecks": true,
+        "noUncheckedIndexedAccess": true,
+        "paths": {
+            "app/*": ["../../packages/app/*"],
+            "navigation/*": ["../../packages/navigation/*"],
+            "state/*": ["../../packages/state/*"],
+            "ui/*": ["../../packages/ui/*"],
+            "utils/*": ["../../packages/utils/*"],
+            "firebase-config/*": ["../../packages/firebase/*"]
+        },
+        "baseUrl": ".",
+        "jsx": "react-jsx"
+    }
 }

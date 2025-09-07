@@ -1,10 +1,11 @@
-import { NativeNavigation } from 'app/navigation/native'
-import { Provider } from 'app/provider'
+import React from 'react';
+import { Provider } from 'app/provider';
+import { RootStackScreen } from 'navigation/src/navigators';
 
 export default function App() {
-  return (
-    <Provider>
-      <NativeNavigation />
-    </Provider>
-  )
+    return (
+        <Provider>
+            <RootStackScreen />
+        </Provider>
+    );
 }
