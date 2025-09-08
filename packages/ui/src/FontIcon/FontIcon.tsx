@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
 // Use the assets from the shared packages folder
 const iconSet = require('../../assets/fonts/selection.json');

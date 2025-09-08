@@ -1,4 +1,4 @@
 // Web storage implementation using localforage
-import localforage from 'localforage';
+import * as localforage from 'localforage';
 
 export default localforage;

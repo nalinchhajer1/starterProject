@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { useContext, useMemo } from 'react';
+import React, { useContext, useMemo } from 'react';
 
 // Tab Navigation Implementation
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -16,9 +15,7 @@ import { PageOneView } from 'features/feature-pageone/View/PageOneView';
 const Tab = createBottomTabNavigator();
 
 const TabView = React.memo<{ size: number; color: string; name: string }>(({ size, color, name }) => {
-    console.log('render:TabView');
-    const language = useContext(LanguageContext);
-    return <FontIcon name={TAB_ICON[name] ?? FONT_ICON.BRIGHTNESS} size={size} color={color} language={language} />;
+    return <FontIcon name={TAB_ICON[name] ?? FONT_ICON.BRIGHTNESS} size={size} color={color} />;
 });
 
 TabView.displayName = 'TabView';
