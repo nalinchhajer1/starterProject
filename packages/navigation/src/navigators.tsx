@@ -8,7 +8,7 @@ import { TabNavigation } from './screens';
 import { YearListView, SettingsView } from 'features/feature-extras/View/components';
 import { isWeb } from 'utils/src/platform';
 import Strings from 'utils/src/language';
-import { onAppInitialize } from 'features/feature-app/redux';
+import { onAppInitialize } from 'features/feature-app/redux/AppActions';
 
 const RootStack = createStackNavigator<RootStackParamList>();
 

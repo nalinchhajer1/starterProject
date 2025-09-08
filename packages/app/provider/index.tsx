@@ -7,7 +7,7 @@ import { isWeb } from 'utils/src/platform';
 import { CodePushManager, FirebasePushNotificationManager } from 'utils/src/managers';
 import { DEFAULT_LANGUAGE, LanguageChangeManager, LanguageContext } from 'utils/src/language';
 import store, { persistor } from 'state/src/store';
-import { getLanguageFromState } from 'features/feature-app/redux';
+import { getLanguageFromState } from 'features/feature-app/redux/AppSelector';
 
 function AppProviders({ children }: { children: React.ReactNode }) {
     const language = useSelector(getLanguageFromState);
