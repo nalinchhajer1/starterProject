@@ -6,20 +6,5 @@ export const COLOR = {
     WHITE: 'white',
     SILVER: '#ececec',
     BLACK: '#000000',
-    IMPORTANT: '#e75750',
-    JAIN: '#e75750',
-    NATIONAL: '#e75750',
-    AVKASH: '#e75750',
-    YADASHT: '#e75750',
-    NAVIGATION_COLOR: '#e75750',
-    SELECTED_COLOR: '#ffffff',
-    NORMAL_COLOR: '#ffffff',
-    NIGHT_RIDER: '#312e2e',
-    ROMANCE: '#faf5e5',
-    NERO: '#222222',
-    GEITATO: '#eeeeee1f',
-    WHISPER: '#eaeaea',
-    NOBEL_GERY: '#999999',
-    GREY: '#1F1F1F',
-    BORDER_COLOR: '#778491'
+    NAVIGATION_COLOR: '#e75750'
 };

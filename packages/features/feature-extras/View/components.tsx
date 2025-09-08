@@ -1,5 +1,5 @@
 // Re-export components from feature-based structure
-import * as React from 'react';
+import React from 'react';
 import { View, Text } from 'react-native';
 
 export { PageOneView } from '../../feature-pageone/View/PageOneView';

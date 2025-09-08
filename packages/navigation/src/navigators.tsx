@@ -29,7 +29,6 @@ class RootStackScreenComponent extends Component<Props> {
     }
 
     render() {
-
         return (
             <RootStack.Navigator screenOptions={NAVIGATION_STYLE}>
                 <RootStack.Group>
