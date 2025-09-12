@@ -9,7 +9,9 @@
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
         "baseUrl": ".",
-        "types": ["react"]
+        "types": ["react"],
+        "strict": true,
+        "moduleResolution": "bundler"
     },
     "include": ["src/**/*.ts", "src/**/*.tsx"],
     "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"]
