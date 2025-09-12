@@ -1,5 +1,5 @@
 {
-    "name": "padmodaya-jain-calendar",
+    "name": "starter-project",
     "private": true,
     "devDependencies": {
         "@nx/eslint": "^20.0.0",

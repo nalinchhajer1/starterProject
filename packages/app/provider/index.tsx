@@ -22,9 +22,7 @@ function AppProviders({ children }: { children: React.ReactNode }) {
             )}
             <LanguageChangeManager language={language} />
             <LanguageContext.Provider value={language ?? DEFAULT_LANGUAGE}>
-                <SafeArea>
-                    <NavigationProvider>{children}</NavigationProvider>
-                </SafeArea>
+                <NavigationProvider>{children}</NavigationProvider>
             </LanguageContext.Provider>
         </>
     );

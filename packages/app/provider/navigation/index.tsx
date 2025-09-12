@@ -1,17 +1,18 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { PDDarkTheme, PDLightTheme } from 'ui/src/theme';
-import { useMemo } from 'react';
+import { useMemo, useCallback } from 'react';
+import { useColorScheme } from 'react-native';
 
 export function NavigationProvider({ children }: { children: React.ReactNode }) {
-    // For web, we'll use light theme by default (can be enhanced with theme detection later)
-    const isDark = false; // You can add theme detection here later
-
+    const scheme = useColorScheme();
+    const onReadyCallback = useCallback(() => {}, []);
     return (
         <NavigationContainer
-            theme={isDark ? PDDarkTheme : PDLightTheme}
+            onReady={onReadyCallback}
+            theme={scheme === 'dark' ? PDDarkTheme : PDLightTheme}
             linking={useMemo(
                 () => ({
-                    prefixes: ['http://localhost:3000', 'https://yourapp.com'],
+                    prefixes: [],
                     config: {
                         initialRouteName: 'Tab',
                         screens: {
