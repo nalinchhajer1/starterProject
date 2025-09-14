@@ -15,5 +15,3 @@ module.exports = {
     moduleFileExtensions: ['ts', 'html', 'js', 'json', 'mjs'],
     coverageReporters: ['html']
 };
-
-

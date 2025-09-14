@@ -8,7 +8,7 @@
         "types": "workspace:*"
     },
     "devDependencies": {
-        "@types/react": "^19.1.1"
+        "@types/react": "^19.1.13"
     },
     "peerDependencies": {
         "react": "*",

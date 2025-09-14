@@ -15,10 +15,7 @@ const config = getDefaultConfig(projectRoot);
 config.watchFolders = [...config.watchFolders, workspaceRoot];
 
 // Configure resolver for monorepo with pnpm support
-config.resolver.nodeModulesPaths = [
-    path.resolve(projectRoot, 'node_modules'),
-    path.resolve(workspaceRoot, 'node_modules')
-];
+config.resolver.nodeModulesPaths = [path.resolve(projectRoot, 'node_modules'), path.resolve(workspaceRoot, 'node_modules')];
 
 // Add resolver configuration for better module resolution
 config.resolver.platforms = ['ios', 'android', 'native', 'web'];

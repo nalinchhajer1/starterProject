@@ -10,15 +10,16 @@
         "@nx/next": "^20.0.0",
         "@nx/react": "^20.0.0",
         "@nx/workspace": "^20.0.0",
-        "@types/react": "^18.2.21",
+        "@types/react": "^19.1.13",
         "eslint": "^9.35.0",
         "eslint-config-expo": "~9.2.0",
         "eslint-config-prettier": "^10.1.8",
         "eslint-import-resolver-typescript": "^4.4.4",
         "eslint-plugin-prettier": "^5.5.4",
+        "husky": "^9.1.7",
         "nx": "^20.0.0",
         "prettier": "^3.6.2",
-        "typescript": "^5.2.2"
+        "typescript": "^5.9.2"
     },
     "scripts": {
         "native": "nx start expo-app",
@@ -35,7 +36,10 @@
         "format:check": "prettier --check .",
         "test": "nx run-many --target=test --all",
         "graph": "nx graph",
-        "reset": "nx reset"
+        "reset": "nx reset",
+        "validate-deps": "node scripts/validate-dependencies.js",
+        "check-deps": "pnpm list --recursive --depth 0",
+        "prepare": "husky"
     },
     "packageManager": "pnpm@9.0.0",
     "eslintConfig": {
