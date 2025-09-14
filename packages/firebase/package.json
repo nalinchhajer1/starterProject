@@ -3,16 +3,16 @@
     "version": "0.0.0",
     "main": "index.ts",
     "dependencies": {
-        "@react-native-firebase/analytics": "^19.2.2",
-        "@react-native-firebase/app": "^19.2.2",
-        "@react-native-firebase/crashlytics": "^19.2.2",
-        "@react-native-firebase/messaging": "^19.2.2",
-        "@react-native-firebase/remote-config": "^19.2.2",
         "firebase": "^10.12.2"
     },
     "peerDependencies": {
         "react": "*",
-        "react-native": "*"
+        "react-native": "*",
+        "@react-native-firebase/analytics": "*",
+        "@react-native-firebase/app": "*",
+        "@react-native-firebase/crashlytics": "*",
+        "@react-native-firebase/messaging": "*",
+        "@react-native-firebase/remote-config": "*"
     },
     "sideEffects": false
 }
