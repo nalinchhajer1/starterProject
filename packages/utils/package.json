@@ -2,8 +2,8 @@
     "name": "utils",
     "version": "0.0.0",
     "dependencies": {
-        "moment-timezone": "^0.5.45",
-        "react-localization": "^1.0.19"
+        "moment-timezone": "0.5.48",
+        "react-localization": "1.0.19"
     },
     "peerDependencies": {
         "react": "*",

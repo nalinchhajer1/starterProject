@@ -3,7 +3,7 @@
     "version": "0.0.0",
     "main": "index.ts",
     "dependencies": {
-        "firebase": "^10.12.2"
+        "firebase": "10.14.1"
     },
     "peerDependencies": {
         "react": "*",
