@@ -17,6 +17,7 @@
         "eslint-import-resolver-typescript": "^4.4.4",
         "eslint-plugin-prettier": "^5.5.4",
         "husky": "^9.1.7",
+        "lint-staged": "^16.1.6",
         "nx": "^20.0.0",
         "prettier": "^3.6.2",
         "typescript": "^5.9.2"
@@ -39,7 +40,8 @@
         "reset": "nx reset",
         "validate-deps": "node scripts/validate-dependencies.js",
         "check-deps": "pnpm list --recursive --depth 0",
-        "prepare": "husky"
+        "prepare": "husky",
+        "lint-staged": "lint-staged"
     },
     "packageManager": "pnpm@9.0.0",
     "eslintConfig": {
@@ -62,5 +64,17 @@
             "expo-constants": "18.0.8",
             "react-native-blob-util": "0.22.2"
         }
+    },
+    "lint-staged": {
+        "*.{js,jsx,ts,tsx}": [
+            "eslint --fix",
+            "prettier --write"
+        ],
+        "*.{json,md,yml,yaml}": [
+            "prettier --write"
+        ],
+        "package.json": [
+            "node scripts/validate-dependencies.js"
+        ]
     }
 }

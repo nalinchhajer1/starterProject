@@ -1,12 +1,5 @@
-echo "🔍 Running pre-commit checks..."
+echo "🔍 Running pre-commit checks with lint-staged..."
 
-echo "📝 Running Prettier..."
-pnpm run format:check
-
-echo "🔧 Running ESLint..."
-pnpm run lint
-
-echo "📦 Validating dependencies..."
-pnpm run validate-deps
+pnpm run lint-staged
 
 echo "✅ All pre-commit checks passed!"
