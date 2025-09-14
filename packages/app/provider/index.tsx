@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Provider as ReduxProvider, useSelector } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { SafeArea } from './safe-area';
@@ -22,9 +22,7 @@ function AppProviders({ children }: { children: React.ReactNode }) {
             )}
             <LanguageChangeManager language={language} />
             <LanguageContext.Provider value={language ?? DEFAULT_LANGUAGE}>
-                <SafeArea>
-                    <NavigationProvider>{children}</NavigationProvider>
-                </SafeArea>
+                <NavigationProvider>{children}</NavigationProvider>
             </LanguageContext.Provider>
         </>
     );

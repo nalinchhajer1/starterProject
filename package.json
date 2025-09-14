@@ -1,5 +1,5 @@
 {
-    "name": "padmodaya-jain-calendar",
+    "name": "starter-project",
     "private": true,
     "devDependencies": {
         "@nx/eslint": "^20.0.0",
@@ -10,16 +10,17 @@
         "@nx/next": "^20.0.0",
         "@nx/react": "^20.0.0",
         "@nx/workspace": "^20.0.0",
-        "@types/react": "^18.2.21",
+        "@types/react": "^19.1.13",
         "eslint": "^9.35.0",
         "eslint-config-expo": "~9.2.0",
         "eslint-config-prettier": "^10.1.8",
         "eslint-import-resolver-typescript": "^4.4.4",
         "eslint-plugin-prettier": "^5.5.4",
-        "expo": "^53.0.0",
+        "husky": "^9.1.7",
+        "lint-staged": "^16.1.6",
         "nx": "^20.0.0",
         "prettier": "^3.6.2",
-        "typescript": "^5.2.2"
+        "typescript": "^5.9.2"
     },
     "scripts": {
         "native": "nx start expo-app",
@@ -36,7 +37,11 @@
         "format:check": "prettier --check .",
         "test": "nx run-many --target=test --all",
         "graph": "nx graph",
-        "reset": "nx reset"
+        "reset": "nx reset",
+        "validate-deps": "node scripts/validate-dependencies.js",
+        "check-deps": "pnpm list --recursive --depth 0",
+        "prepare": "husky",
+        "lint-staged": "lint-staged"
     },
     "packageManager": "pnpm@9.0.0",
     "eslintConfig": {
@@ -47,5 +52,29 @@
             }
         },
         "root": true
+    },
+    "pnpm": {
+        "overrides": {
+            "react-native": "0.81.4",
+            "expo-linking": "8.0.8",
+            "react-native-gesture-handler": "2.28.0",
+            "react-native-reanimated": "4.1.0",
+            "react-native-safe-area-context": "5.6.1",
+            "react-native-screens": "4.16.0",
+            "expo-constants": "18.0.8",
+            "react-native-blob-util": "0.22.2"
+        }
+    },
+    "lint-staged": {
+        "*.{js,jsx,ts,tsx}": [
+            "eslint --fix",
+            "prettier --write"
+        ],
+        "*.{json,md,yml,yaml}": [
+            "prettier --write"
+        ],
+        "package.json": [
+            "node scripts/validate-dependencies.js"
+        ]
     }
 }

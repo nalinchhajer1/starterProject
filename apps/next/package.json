@@ -3,10 +3,10 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "dev": "next dev",
-        "build": "next build",
-        "start": "next start",
-        "lint": "next lint"
+        "dev": "../../node_modules/.bin/next dev",
+        "build": "../../node_modules/.bin/next build",
+        "start": "../../node_modules/.bin/next start",
+        "lint": "../../node_modules/.bin/next lint"
     },
     "dependencies": {
         "features": "workspace:*",
@@ -18,10 +18,10 @@
         "raf": "^3.4.1",
         "react": "^19.1.1",
         "react-dom": "^19.1.1",
-        "react-native-gesture-handler": "~2.20.2",
-        "react-native-reanimated": "~3.17.4",
-        "react-native-safe-area-context": "4.12.0",
-        "react-native-screens": "~4.4.0",
+        "react-native-gesture-handler": "~2.28.0",
+        "react-native-reanimated": "~4.1.0",
+        "react-native-safe-area-context": "5.6.1",
+        "react-native-screens": "~4.16.0",
         "react-native-web": "~0.19.10",
         "state": "workspace:*",
         "ui": "workspace:*",

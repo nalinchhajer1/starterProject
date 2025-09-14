@@ -16,18 +16,18 @@
                 "dev": true
             }
         },
-    "run-ios": {
-      "executor": "nx:run-script",
-      "options": {
-        "script": "ios"
-      }
-    },
-    "run-android": {
-      "executor": "nx:run-script",
-      "options": {
-        "script": "android"
-      }
-    },
+        "run-ios": {
+            "executor": "nx:run-script",
+            "options": {
+                "script": "ios"
+            }
+        },
+        "run-android": {
+            "executor": "nx:run-script",
+            "options": {
+                "script": "android"
+            }
+        },
         "build": {
             "executor": "@nx/expo:build",
             "options": {}

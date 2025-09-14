@@ -11,15 +11,18 @@ const workspaceRoot = path.resolve(projectRoot, '../..');
 
 const config = getDefaultConfig(projectRoot);
 
-config.watchFolders = [workspaceRoot];
-config.resolver.nodeModulesPaths = [path.resolve(projectRoot, 'node_modules'), path.resolve(workspaceRoot, 'node_modules')];
-config.resolver.disableHierarchicalLookup = true;
+// Add the workspace root to watchFolders along with Expo's defaults
+config.watchFolders = [...config.watchFolders, workspaceRoot];
 
-config.transformer.getTransformOptions = async () => ({
-    transform: {
-        experimentalImportSupport: false,
-        inlineRequires: true
-    }
-});
+// Configure resolver for monorepo with pnpm support
+config.resolver.nodeModulesPaths = [path.resolve(projectRoot, 'node_modules'), path.resolve(workspaceRoot, 'node_modules')];
+
+// Add resolver configuration for better module resolution
+config.resolver.platforms = ['ios', 'android', 'native', 'web'];
+config.resolver.sourceExts = ['js', 'jsx', 'json', 'ts', 'tsx', 'cjs', 'json'];
+
+// Handle package resolution issues with hoisted dependencies
+config.resolver.unstable_enablePackageExports = false;
+config.resolver.unstable_enableSymlinks = false;
 
 module.exports = config;

@@ -4,16 +4,16 @@
     "dependencies": {
         "@react-navigation/native": "^7.1.0",
         "react-icomoon": "^2.1.2",
-        "react-native-calendar-strip": "^2.2.6",
-        "react-native-reanimated-zoom": "^0.3.3",
-        "react-native-vector-icons": "^10.1.0",
         "utils": "workspace:*"
     },
     "peerDependencies": {
         "react": "*",
         "react-native": "*",
         "react-native-gesture-handler": "*",
-        "react-native-reanimated": "*"
+        "react-native-reanimated": "*",
+        "react-native-calendar-strip": "*",
+        "react-native-reanimated-zoom": "*",
+        "react-native-vector-icons": "*"
     },
     "sideEffects": false
 }

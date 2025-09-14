@@ -1,5 +1,9 @@
 import React from 'react';
 import LocalizedStrings from 'react-localization';
+import { IStrings } from './resource/language/Strings';
+
+// Re-export types for use in other parts of the application
+export type { IStrings };
 
 // Language constants
 export const DEFAULT_LANGUAGE = 'en';
@@ -8,10 +12,10 @@ export const DEFAULT_LANGUAGE = 'en';
 export const LanguageContext = React.createContext<string>(DEFAULT_LANGUAGE);
 
 // React-localization setup
-const Strings = new LocalizedStrings({
+const Strings = new LocalizedStrings<IStrings>({
     en: require('./resource/language/en.json'),
     ...require('./resource/language/en.json')
-}) as LocalizedStrings & Record<string, string>;
+});
 
 export default Strings;
 
