@@ -2,6 +2,7 @@ const { defineConfig } = require('eslint/config');
 const expoConfig = require('eslint-config-expo/flat');
 const eslintPluginPrettierRecommended = require('eslint-plugin-prettier/recommended');
 const nxPlugin = require('@nx/eslint-plugin');
+const testingLibraryPlugin = require('eslint-plugin-testing-library');
 
 module.exports = defineConfig([
     expoConfig,
@@ -80,6 +81,18 @@ module.exports = defineConfig([
                     ignore: ['react-native', 'solito/navigation', 'app/provider']
                 }
             ]
+        }
+    },
+    {
+        // Test files only
+        files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)', 'jest/**/*.js'],
+        plugins: {
+            'testing-library': testingLibraryPlugin,
+        },
+        rules: {
+            'testing-library/prefer-screen-queries': 'error',
+            'testing-library/no-debugging-utils': 'warn',
+            'testing-library/no-dom-import': 'off', // We're using React Native, not DOM
         }
     }
 ]);
