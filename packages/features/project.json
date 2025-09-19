@@ -25,7 +25,7 @@
             "executor": "@nx/jest:jest",
             "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
             "options": {
-                "jestConfig": "jest.config.base.js",
+                "jestConfig": "packages/features/jest.config.js",
                 "passWithNoTests": true
             }
         }
