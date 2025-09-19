@@ -2,16 +2,10 @@ const nxPreset = require('@nx/jest/preset').default;
 
 module.exports = {
     ...nxPreset,
-    testMatch: ['**/+(*.)+(spec|test).+(ts|js)?(x)'],
-    transform: {
-        '^.+\\.(ts|js|html)$': [
-            'jest-preset-angular',
-            {
-                tsconfig: 'tsconfig.spec.json'
-            }
-        ]
-    },
+    // Let each project/jest.config.js define its own testMatch pattern
+    // testMatch: ['**/?(*.)+(spec|test).[tj]s?(x)'], // Removed - causes all tests to run
+    // Let each project/jest.config.js define its own transform via babel-jest.
     resolver: '@nx/jest/plugins/resolver',
-    moduleFileExtensions: ['ts', 'html', 'js', 'json', 'mjs'],
+    moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'mjs'],
     coverageReporters: ['html']
 };

@@ -32,7 +32,7 @@
             "executor": "@nx/jest:jest",
             "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
             "options": {
-                "jestConfig": "apps/next/jest.config.ts",
+                "jestConfig": "apps/next/jest.config.js",
                 "passWithNoTests": true
             }
         }
