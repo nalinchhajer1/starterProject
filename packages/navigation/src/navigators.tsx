@@ -2,12 +2,9 @@ import React, { Component } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { connect } from 'react-redux';
 import { RootStackParamList } from './types';
-import { NAVIGATION_VIEW_ID } from './constants';
 import { NAVIGATION_STYLE } from './styles';
 import { TabNavigation } from './screens';
-import { YearListView, SettingsView } from 'features/feature-extras/View/components';
 import { isWeb } from 'utils/src/platform';
-import Strings from 'utils/src/language';
 import { onAppInitialize } from 'features/feature-app/redux/AppActions';
 
 const RootStack = createStackNavigator<RootStackParamList>();
@@ -31,28 +28,7 @@ class RootStackScreenComponent extends Component<Props> {
     render() {
         return (
             <RootStack.Navigator screenOptions={NAVIGATION_STYLE}>
-                <RootStack.Group>
-                    <RootStack.Screen name="Tab" options={{ headerShown: false }} component={TabNavigation} />
-
-                    <RootStack.Group>
-                        <RootStack.Screen
-                            name={NAVIGATION_VIEW_ID.THREE_VIEW}
-                            component={YearListView}
-                            options={{
-                                title: Strings.THREE
-                            }}
-                        />
-                    </RootStack.Group>
-                </RootStack.Group>
-                <RootStack.Group screenOptions={{ presentation: 'modal' }}>
-                    <RootStack.Screen
-                        name={NAVIGATION_VIEW_ID.SETTINGS}
-                        component={SettingsView}
-                        options={{
-                            title: Strings.SETTINGS
-                        }}
-                    />
-                </RootStack.Group>
+                <RootStack.Screen name="Tab" options={{ headerShown: false }} component={TabNavigation} />
             </RootStack.Navigator>
         );
     }

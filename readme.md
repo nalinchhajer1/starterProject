@@ -21,7 +21,7 @@ pnpm web       # Start Next.js development server
 
 This project is designed as a **starter template** for new cross-platform applications. Before starting development:
 
-1. **Read the Setup Guide**: See `SETUP_GUIDE.md` for step-by-step setup instructions
+1. **Read the Setup Guide**: See `documents/SETUP_GUIDE.md` for step-by-step setup instructions
 2. **Customize Project Identity**: Update app names, bundle identifiers, and configuration
 3. **Replace Default Features**: Remove example features and add your own
 4. **Update Navigation**: Customize the navigation structure for your app
@@ -325,9 +325,10 @@ pnpm nx run-many --target=lint --all
 
 ## 📚 Documentation
 
-- **Setup Guide**: See `SETUP_GUIDE.md` for getting started with your new project
-- **Customization Guide**: See `CUSTOMIZATION_GUIDE.md` for detailed customization instructions
-- **Architecture**: See `ARCHITECTURE.md` for detailed monorepo architecture
+- **Setup Guide**: See `documents/SETUP_GUIDE.md` for getting started with your new project
+- **Customization Guide**: See `documents/CUSTOMIZATION_GUIDE.md` for detailed customization instructions
+- **Template Overview**: See `documents/TEMPLATE_README.md` for comprehensive template information
+- **Architecture**: See `documents/ARCHITECTURE.md` for detailed monorepo architecture
 - **Solito**: [Cross-platform React Native + Next.js](https://solito.dev/)
 - **Expo**: [Mobile development documentation](https://docs.expo.dev/)
 - **Next.js**: [Web development documentation](https://nextjs.org/docs)

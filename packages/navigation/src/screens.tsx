@@ -8,8 +8,6 @@ import FontIcon from 'ui/src/FontIcon';
 import Strings, { LanguageContext } from 'utils/src/language';
 import { COLOR } from 'utils/src/colors';
 import { fontSize } from 'utils/src/font';
-import { OtherView } from 'features/feature-otherview/View/OtherView';
-import { PageTwoView } from 'features/feature-pagetwo/View/PageTwoView';
 import { PageOneView } from 'features/feature-pageone/View/PageOneView';
 
 const Tab = createBottomTabNavigator();
@@ -51,8 +49,8 @@ export const TabNavigation = () => {
     return (
         <Tab.Navigator screenOptions={TabNavigationConfig} initialRouteName={NAVIGATION_VIEW_ID.PAGE_ONE_VIEW}>
             <Tab.Screen name={NAVIGATION_VIEW_ID.PAGE_ONE_VIEW} component={PageOneView} options={oneOption} />
-            <Tab.Screen name={NAVIGATION_VIEW_ID.PAGE_TWO_VIEW} component={PageTwoView} options={twoOption} />
-            <Tab.Screen name={NAVIGATION_VIEW_ID.OTHER_VIEW} component={OtherView} options={otherOption} />
+            <Tab.Screen name={NAVIGATION_VIEW_ID.PAGE_TWO_VIEW} component={PageOneView} options={twoOption} />
+            <Tab.Screen name={NAVIGATION_VIEW_ID.OTHER_VIEW} component={PageOneView} options={otherOption} />
         </Tab.Navigator>
     );
 };

@@ -109,12 +109,13 @@ pnpm web       # Start Next.js development server
 
 #### 4. **Features Package** ⭐ **REQUIRED**
 
+**Current simplified structure:**
+- `packages/features/feature-app/` → Core app functionality (keep this)
+- `packages/features/feature-loading/` → Loading component (keep this)
+- `packages/features/feature-pageone/` → Example feature (replace with your features)
+
 **Default features to replace:**
 - `packages/features/feature-pageone/` → Your first feature
-- `packages/features/feature-pagetwo/` → Your second feature  
-- `packages/features/feature-otherview/` → Your third feature
-- `packages/features/feature-app/` → Your app-level features
-- `packages/features/feature-view/` → Your view-level features
 
 **Each feature contains:**
 - `View/` - React components
@@ -128,10 +129,9 @@ pnpm web       # Start Next.js development server
 - `packages/state/src/store.ts` - Store configuration
 - Feature-specific Redux files in `packages/features/*/redux/`
 
-**Default state to replace:**
-- App state (theme, language, etc.)
-- View state (navigation, UI state)
-- Feature-specific state
+**Current simplified state:**
+- App state (theme, language, etc.) - keep this
+- Feature-specific state - add your own
 
 #### 6. **UI Components** ⭐ **REQUIRED**
 

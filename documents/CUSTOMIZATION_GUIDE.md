@@ -123,14 +123,16 @@ export { SettingsScreen } from './screens/SettingsScreen';
 
 ### 3. **Features Package** ⭐ **CRITICAL**
 
-#### Remove Default Features
+#### Current Simplified Structure
+The project now has a minimal structure with only essential features:
+- `feature-app/` - Core app functionality (keep this)
+- `feature-pageone/` - Example feature (replace with your features)
+- `feature-loading/` - Loading component (keep this)
+
+#### Remove Example Features
 ```bash
-# Remove these default features:
+# Remove the example feature (keep feature-app and feature-loading):
 rm -rf packages/features/feature-pageone
-rm -rf packages/features/feature-pagetwo
-rm -rf packages/features/feature-otherview
-rm -rf packages/features/feature-extras
-rm -rf packages/features/feature-loading
 ```
 
 #### Create Your Features
@@ -167,9 +169,9 @@ export * from './feature-home';
 export * from './feature-profile';
 export * from './feature-settings';
 
-// Keep core features if needed
+// Keep core features (these are essential)
 export * from './feature-app';
-export * from './feature-view';
+export * from './feature-loading';
 ```
 
 ### 4. **State Management** ⭐ **CRITICAL**
@@ -177,29 +179,35 @@ export * from './feature-view';
 #### Update Global State Slices
 **File:** `packages/state/src/slices.ts`
 ```typescript
-// Replace default slices with your app's state structure
-export interface RootState {
-  // Remove default state:
-  // appState: AppState;
-  // viewState: ViewState;
-  
-  // Add your state:
-  homeState: HomeState;
-  profileState: ProfileState;
-  settingsState: SettingsState;
-}
+// The current simplified structure only has appState
+// Add your custom state slices here
+import { combineReducers } from '@reduxjs/toolkit';
+import AppSlices from 'features/feature-app/redux/AppSlices';
+// Import your custom slices
+import HomeSlices from 'features/feature-home/redux/HomeSlices';
+import ProfileSlices from 'features/feature-profile/redux/ProfileSlices';
+
+const rootReducer = combineReducers({
+    appState: AppSlices,
+    // Add your custom state slices
+    homeState: HomeSlices,
+    profileState: ProfileSlices,
+});
+
+export default rootReducer;
 ```
 
 #### Update Store Configuration
 **File:** `packages/state/src/store.ts`
 ```typescript
-// Update store with your slices
+// The store is already configured with the simplified structure
+// Add your custom reducers to the store configuration
 export const store = configureStore({
   reducer: {
-    // Remove default reducers and add your reducers
+    appState: AppSlices,
+    // Add your custom reducers
     home: homeSlice.reducer,
     profile: profileSlice.reducer,
-    settings: settingsSlice.reducer,
   },
   // ... middleware configuration
 });

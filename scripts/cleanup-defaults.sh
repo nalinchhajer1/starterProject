@@ -36,10 +36,6 @@ echo ""
 # Default features to potentially remove
 DEFAULT_FEATURES=(
     "feature-pageone"
-    "feature-pagetwo" 
-    "feature-otherview"
-    "feature-extras"
-    "feature-loading"
 )
 
 # Ask user what to remove
@@ -60,10 +56,10 @@ for feature in "${DEFAULT_FEATURES[@]}"; do
     fi
 done
 
-# Ask about keeping feature-app and feature-view
+# Ask about keeping core features
 echo ""
-echo "Feature-app and feature-view contain core app functionality."
-echo "You may want to keep these and modify them instead of removing them."
+echo "Feature-app and feature-loading contain core app functionality."
+echo "You should keep these as they are essential for the app to work."
 echo ""
 
 read -p "Remove feature-app? (y/n): " -n 1 -r
@@ -71,17 +67,19 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
     rm -rf "packages/features/feature-app"
     print_status "Removed feature-app"
+    print_warning "WARNING: This will break the app! You'll need to recreate core functionality."
 else
-    print_warning "Keeping feature-app (recommended)"
+    print_warning "Keeping feature-app (recommended - essential for app functionality)"
 fi
 
-read -p "Remove feature-view? (y/n): " -n 1 -r
+read -p "Remove feature-loading? (y/n): " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-    rm -rf "packages/features/feature-view"
-    print_status "Removed feature-view"
+    rm -rf "packages/features/feature-loading"
+    print_status "Removed feature-loading"
+    print_warning "WARNING: This will break loading functionality!"
 else
-    print_warning "Keeping feature-view (recommended)"
+    print_warning "Keeping feature-loading (recommended - used for loading states)"
 fi
 
 # Update features index file
@@ -96,7 +94,7 @@ cat > packages/features/index.ts << 'EOF'
 
 // Core features (uncomment if you kept them)
 // export * from './feature-app';
-// export * from './feature-view';
+// export * from './feature-loading';
 EOF
 
 print_status "Updated features index file"
