@@ -17,6 +17,29 @@ pnpm native    # Start Expo development server
 pnpm web       # Start Next.js development server
 ```
 
+## 🎯 Using as a Template
+
+This project is designed as a **starter template** for new cross-platform applications. Before starting development:
+
+1. **Read the Setup Guide**: See `SETUP_GUIDE.md` for step-by-step setup instructions
+2. **Customize Project Identity**: Update app names, bundle identifiers, and configuration
+3. **Replace Default Features**: Remove example features and add your own
+4. **Update Navigation**: Customize the navigation structure for your app
+5. **Configure State Management**: Set up Redux state for your application needs
+
+**Important**: This template includes example features (PageOne, PageTwo, Other) that should be replaced with your actual application features.
+
+### 🧹 Quick Cleanup
+
+Use the provided cleanup script to remove default features:
+
+```bash
+# Run the cleanup script
+./scripts/cleanup-defaults.sh
+```
+
+This interactive script will help you remove default features and prepare your project for customization.
+
 ## 🔦 About
 
 This monorepo is a **Starter application** built with modern cross-platform technologies. It provides a comprehensive template with features like:
@@ -42,7 +65,7 @@ The architecture follows a **feature-based approach** with shared business logic
 - **Code Quality**: ESLint + Prettier
 
 ### Platform Versions
-- **Mobile**: Expo SDK 53 with React Native 0.79.5
+- **Mobile**: Expo SDK 54 with React Native 0.81.4
 - **Web**: Next.js 15 with React 19.1.1
 - **Package Manager**: pnpm with workspace support
 - **Build System**: Nx for optimized builds and caching
@@ -302,8 +325,9 @@ pnpm nx run-many --target=lint --all
 
 ## 📚 Documentation
 
+- **Setup Guide**: See `SETUP_GUIDE.md` for getting started with your new project
+- **Customization Guide**: See `CUSTOMIZATION_GUIDE.md` for detailed customization instructions
 - **Architecture**: See `ARCHITECTURE.md` for detailed monorepo architecture
-- **Migration**: See `MIGRATION_GUIDE.md` for migration from Yarn + Turborepo
 - **Solito**: [Cross-platform React Native + Next.js](https://solito.dev/)
 - **Expo**: [Mobile development documentation](https://docs.expo.dev/)
 - **Next.js**: [Web development documentation](https://nextjs.org/docs)
