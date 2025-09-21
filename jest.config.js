@@ -18,6 +18,7 @@ module.exports = {
         '^ui/(.*)$': '<rootDir>/packages/ui/$1',
         '^utils/(.*)$': '<rootDir>/packages/utils/$1',
         '^types/(.*)$': '<rootDir>/packages/types/$1',
-        '^firebase-config/(.*)$': '<rootDir>/packages/firebase/$1'
+        '^firebase-config/(.*)$': '<rootDir>/packages/firebase/$1',
+        '^native/(.*)$': '<rootDir>/packages/native/$1'
     }
 };

@@ -25,6 +25,11 @@
         },
         "test": {
             "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"]
+        },
+        "@nx/js:tsc": {
+            "cache": true,
+            "dependsOn": ["^build"],
+            "inputs": ["production", "^production"]
         }
     },
     "generators": {

@@ -5,12 +5,13 @@
         "paths": {
             "app/*": ["../../packages/app/*"],
             "features/*": ["../../packages/features/*"],
+            "firebase-config/*": ["../../packages/firebase/*"],
+            "native/*": ["../../packages/native/*"],
             "navigation/*": ["../../packages/navigation/*"],
             "state/*": ["../../packages/state/*"],
+            "types": ["../../packages/types"],
             "ui/*": ["../../packages/ui/*"],
-            "utils/*": ["../../packages/utils/*"],
-            "firebase-config/*": ["../../packages/firebase/*"],
-            "types": ["../../packages/types"]
+            "utils/*": ["../../packages/utils/*"]
         },
         "baseUrl": ".",
         "jsx": "react-jsx"

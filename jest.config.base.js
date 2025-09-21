@@ -1,4 +1,3 @@
-/* eslint-disable */
 module.exports = {
     preset: 'react-native',
     setupFilesAfterEnv: ['<rootDir>/jest/setup.js'],
@@ -16,7 +15,8 @@ module.exports = {
         '^state/(.*)$': '<rootDir>/packages/state/$1',
         '^ui/(.*)$': '<rootDir>/packages/ui/$1',
         '^utils/(.*)$': '<rootDir>/packages/utils/$1',
-        '^types/(.*)$': '<rootDir>/packages/types/$1'
+        '^types/(.*)$': '<rootDir>/packages/types/$1',
+        '^native/(.*)$': '<rootDir>/packages/native/$1'
     },
     transform: {
         '^.+\\.(js|jsx|ts|tsx)$': [

@@ -169,6 +169,164 @@ cd ../..
 pnpm install
 ```
 
+## 📦 Adding New Packages/Modules
+
+### Creating a New Package
+
+To add a new package to the monorepo, use the Nx generator:
+
+```bash
+# Generate a new TypeScript library
+npx nx generate @nx/js:library \
+  --directory=packages \
+  --name=your-package-name \
+  --bundler=tsc \
+  --linter=eslint \
+  --unitTestRunner=jest \
+  --tags="type:lib,scope:shared" \
+  --publishable=false \
+  --buildable=true \
+  --strict=true \
+  --skipFormat=false \
+  --skipPackageJson=false \
+  --skipTsConfig=false \
+  --setParserOptionsProject=false \
+  --config=project \
+  --minimal=false \
+  --simpleName=false \
+  --useProjectJson=true
+```
+
+### Required Configuration Updates
+
+After generating a new package, you must update these configuration files:
+
+#### 1. **Jest Configuration**
+Update both `jest.config.js` and `jest.config.base.js`:
+```javascript
+moduleNameMapper: {
+  // ... existing mappings
+  '^your-package-name/(.*)$': '<rootDir>/packages/your-package-name/$1'
+}
+```
+
+#### 2. **TypeScript Configuration**
+Update `tsconfig.json`:
+```json
+{
+  "compilerOptions": {
+    "paths": {
+      // ... existing paths
+      "your-package-name/*": ["../../packages/your-package-name/*"]
+    }
+  }
+}
+```
+
+#### 3. **Package Configuration**
+Update the generated `packages/your-package-name/project.json`:
+```json
+{
+  "name": "your-package-name",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/your-package-name/src",
+  "projectType": "library",
+  "tags": ["type:lib", "scope:shared"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/your-package-name",
+        "main": "packages/your-package-name/src/index.ts",
+        "tsConfig": "packages/your-package-name/tsconfig.lib.json",
+        "assets": ["packages/your-package-name/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/your-package-name/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/your-package-name/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  }
+}
+```
+
+#### 4. **Jest Configuration for Package**
+Create `packages/your-package-name/jest.config.js`:
+```javascript
+const baseConfig = require('../../jest.config');
+
+module.exports = {
+    ...baseConfig,
+    displayName: 'your-package-name',
+    rootDir: '../../',
+    testMatch: ['<rootDir>/packages/your-package-name/**/?(*.)+(spec|test).[tj]s?(x)']
+};
+```
+
+#### 5. **TypeScript Library Configuration**
+Update `packages/your-package-name/tsconfig.lib.json`:
+```json
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc",
+    "declaration": true,
+    "lib": ["es2015", "dom", "dom.iterable"],
+    "skipLibCheck": true,
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "paths": {
+      "types": ["../../packages/types"]
+    },
+    "types": ["react"]
+  },
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["jest.config.ts", "**/*.spec.ts", "**/*.test.ts"]
+}
+```
+
+### Verification Steps
+
+After creating a new package, verify it works:
+
+```bash
+# Test the new package
+pnpm nx test your-package-name
+
+# Build the new package
+pnpm nx build your-package-name
+
+# Lint the new package
+pnpm nx lint your-package-name
+
+# Run all tests to ensure nothing is broken
+pnpm test
+```
+
+### Example: Native Package Creation
+
+See `tasksummary/added-new-module-using-nx.md` for a complete example of creating the `native` package.
+
+### Cursor AI Assistant
+
+For detailed development guidelines and module creation instructions, see the `.cursor/rules/` directory:
+- **`.cursor/rules/development.md`** - Complete module creation guide and development patterns
+- **`.cursor/rules/README.md`** - Overview of all available cursor rules
+
 ### Native Dependencies
 
 For libraries with native code, install in `apps/expo`:

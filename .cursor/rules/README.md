@@ -5,7 +5,7 @@ This directory contains organized Cursor rules for the Starter Project. Each fil
 ## 📁 File Structure
 
 - **`main.md`** - Main project overview, architecture, and core domain knowledge
-- **`development.md`** - Development guidelines, code style, and workflow
+- **`development.md`** - Development guidelines, code style, workflow, and module creation
 - **`architecture.md`** - File structure, design patterns, and data flow
 - **`features.md`** - Feature development guidelines and patterns
 - **`platforms.md`** - Platform-specific considerations and integrations
