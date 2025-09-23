@@ -71,9 +71,6 @@ web-build/
 
 **/*/.next
 
-apps/expo/ios
-apps/expo/android
-
 # Turborepo (legacy)
 .turbo
 
