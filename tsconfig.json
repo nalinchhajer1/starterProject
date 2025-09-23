@@ -3,15 +3,15 @@
         "strictNullChecks": true,
         "noUncheckedIndexedAccess": true,
         "paths": {
-            "app/*": ["../../packages/app/*"],
-            "features/*": ["../../packages/features/*"],
-            "firebase-config/*": ["../../packages/firebase/*"],
-            "native/*": ["../../packages/native/*"],
-            "navigation/*": ["../../packages/navigation/*"],
-            "state/*": ["../../packages/state/*"],
-            "types": ["../../packages/types"],
-            "ui/*": ["../../packages/ui/*"],
-            "utils/*": ["../../packages/utils/*"]
+            "app/*": ["packages/app/*"],
+            "features/*": ["packages/features/*"],
+            "firebase-config/*": ["packages/firebase/*"],
+            "native/*": ["packages/native/*"],
+            "navigation/*": ["packages/navigation/*"],
+            "state/*": ["packages/state/*"],
+            "types": ["packages/types"],
+            "ui/*": ["packages/ui/*"],
+            "utils/*": ["packages/utils/*"]
         },
         "baseUrl": ".",
         "jsx": "react-jsx"

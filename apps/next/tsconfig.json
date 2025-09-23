@@ -19,14 +19,17 @@
                 "name": "next"
             }
         ],
+        "types": ["node", "react"],
         "baseUrl": ".",
         "paths": {
             "app/*": ["../../packages/app/*"],
+            "features/*": ["../../packages/features/*"],
             "navigation/*": ["../../packages/navigation/*"],
             "state/*": ["../../packages/state/*"],
             "ui/*": ["../../packages/ui/*"],
             "utils/*": ["../../packages/utils/*"],
-            "firebase-config/*": ["../../packages/firebase/*"]
+            "firebase-config/*": ["../../packages/firebase/*"],
+            "types": ["../../packages/types"]
         }
     },
     "include": ["next-env.d.ts", "app-env.d.ts", "**/*.ts", "**/*.tsx", "next.config.js", ".next/types/**/*.ts"],

@@ -28,6 +28,22 @@ module.exports = defineConfig([
         ]
     },
     {
+        // Ensure eslint-plugin-import resolves TS path aliases from workspace tsconfigs
+        settings: {
+            'import/resolver': {
+                typescript: {
+                    // Include root and per-project tsconfig files
+                    project: [
+                        './tsconfig.json',
+                        './packages/*/tsconfig.lib.json',
+                        './apps/*/tsconfig.json'
+                    ],
+                    alwaysTryTypes: true
+                }
+            }
+        }
+    },
+    {
         files: ['**/*.{ts,tsx,js,jsx}'],
         plugins: {
             '@nx': nxPlugin,

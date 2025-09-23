@@ -28,10 +28,7 @@
                 "script": "android"
             }
         },
-        "build": {
-            "executor": "@nx/expo:build",
-            "options": {}
-        },
+        "build": {},
         "build-android": {
             "executor": "@nx/expo:build-android",
             "options": {}
