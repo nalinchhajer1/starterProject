@@ -2,11 +2,13 @@
     "compilerOptions": {
         "strictNullChecks": true,
         "noUncheckedIndexedAccess": true,
+        "skipLibCheck": true,
         "paths": {
             "app/*": ["packages/app/*"],
             "features/*": ["packages/features/*"],
             "firebase-config/*": ["packages/firebase/*"],
             "native/*": ["packages/native/*"],
+            "native-library/*": ["packages/native-library/*"],
             "navigation/*": ["packages/navigation/*"],
             "state/*": ["packages/state/*"],
             "types": ["packages/types"],
