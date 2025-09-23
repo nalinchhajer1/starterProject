@@ -3,6 +3,7 @@ const expoConfig = require('eslint-config-expo/flat');
 const eslintPluginPrettierRecommended = require('eslint-plugin-prettier/recommended');
 const nxPlugin = require('@nx/eslint-plugin');
 const testingLibraryPlugin = require('eslint-plugin-testing-library');
+const pluginJest = require('eslint-plugin-jest');
 
 module.exports = defineConfig([
     expoConfig,
@@ -98,6 +99,21 @@ module.exports = defineConfig([
                 }
             ]
         }
+    },
+    {
+        // update this to match your test files
+        files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)', 'jest/**/*.js'],
+        plugins: { jest: pluginJest },
+        languageOptions: {
+          globals: pluginJest.environments.globals.globals,
+        },
+        rules: {
+          'jest/no-disabled-tests': 'warn',
+          'jest/no-focused-tests': 'error',
+          'jest/no-identical-title': 'error',
+          'jest/prefer-to-have-length': 'warn',
+          'jest/valid-expect': 'error',
+        },
     },
     {
         // Test files only
