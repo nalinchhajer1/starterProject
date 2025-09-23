@@ -12,6 +12,13 @@
     },
     "./package.json": "./package.json"
   },
+  "author": "Nalin Chhajer",
+  "homepage": "https://github.com/nalin-chhajer/starter-project",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nalin-chhajer/starter-project.git"
+  },
   "files": [
     "src",
     "lib",
