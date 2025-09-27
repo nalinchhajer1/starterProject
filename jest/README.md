@@ -188,21 +188,10 @@ The following modules are automatically mocked in the Jest setup:
 
 ### Native Modules
 - `react-native-vector-icons`
-- `react-native-device-info`
-- `react-native-permissions`
-- `react-native-in-app-review`
-- `react-native-geocoding`
-- `react-native-calendar-strip`
-- `react-native-reanimated-zoom`
-- `react-native-worklets`
-- `redux-persist-filesystem-storage`
-- `@react-native-async-storage/async-storage`
 
 ### Expo Modules
 - `expo-splash-screen`
 - `expo-status-bar`
-- `expo-image`
-- `expo-linear-gradient`
 
 ## Best Practices
 

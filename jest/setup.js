@@ -18,7 +18,6 @@ jest.mock('react-native/Libraries/Utilities/Platform', () => ({
 
 // Ensure dev flag exists for RN deps expecting it
 if (typeof global.__DEV__ === 'undefined') {
-    // eslint-disable-next-line no-underscore-dangle
     global.__DEV__ = true;
 }
 
@@ -64,17 +63,6 @@ jest.mock('@react-native-firebase/messaging', () => ({
         onNotificationOpenedApp: jest.fn(),
         getInitialNotification: jest.fn(() => Promise.resolve(null))
     })
-}));
-
-// Mock @react-native-async-storage/async-storage
-jest.mock('@react-native-async-storage/async-storage', () => ({
-    __esModule: true,
-    default: {
-        getItem: jest.fn(() => Promise.resolve(null)),
-        setItem: jest.fn(() => Promise.resolve()),
-        removeItem: jest.fn(() => Promise.resolve()),
-        clear: jest.fn(() => Promise.resolve())
-    }
 }));
 
 // Mock redux-persist-filesystem-storage

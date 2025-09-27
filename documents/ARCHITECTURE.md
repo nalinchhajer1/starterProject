@@ -186,12 +186,10 @@ RootState
 - Theme definitions (light/dark)
 - Reusable UI components
 - Icon system (FontIcon)
-- Calendar components
 
 **Dependencies**:
 
 - `react-native-vector-icons` - Icon library
-- `react-native-calendar-strip` - Calendar component
 - `react-icomoon` - Custom icon system
 
 **Key Files**:
@@ -227,15 +225,12 @@ PDDarkTheme; // Dark theme
 
 **Dependencies**:
 
-- `react-native-device-info` - Device information
-- `react-native-permissions` - Permission handling
 - `moment-timezone` - Date/time utilities
 - `react-localization` - Internationalization
 
 **Key Files**:
 
 - `platform.ts` - Platform detection
-- `device.ts` - Device utilities
 - `language.ts` - Localization
 - `storage.ts` - Storage utilities
 - `colors.ts` - Color definitions

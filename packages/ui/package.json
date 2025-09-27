@@ -11,8 +11,6 @@
         "react-native": "*",
         "react-native-gesture-handler": "*",
         "react-native-reanimated": "*",
-        "react-native-calendar-strip": "*",
-        "react-native-reanimated-zoom": "*",
         "react-native-vector-icons": "*"
     },
     "sideEffects": false

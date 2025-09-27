@@ -7,10 +7,7 @@
     },
     "peerDependencies": {
         "react": "*",
-        "react-native": "*",
-        "@react-native-async-storage/async-storage": "*",
-        "react-native-device-info": "*",
-        "react-native-permissions": "*"
+        "react-native": "*"
     },
     "sideEffects": false
 }
