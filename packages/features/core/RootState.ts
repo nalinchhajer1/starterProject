@@ -1,4 +1,4 @@
-import type { AppState } from './appStateTypes';
+import { AppState } from '../feature-app/redux/AppSlices';
 
 // Core slices (optional)
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
