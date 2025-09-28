@@ -31,7 +31,7 @@ const initialState: AppState = {
     dontAskForLocationOnLaunch: null,
     adIndex: null,
     savedLocation: null,
-    numberOfTimeAppOpened: 1
+    numberOfTimeAppOpened: 0
 };
 
 const appSlice = createSlice({

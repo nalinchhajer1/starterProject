@@ -6,5 +6,5 @@ export function registerAppFeature(injectReducer: (key: string, reducer: any) =>
     injectReducer('appState', AppSlices);
 
     // Register the app saga
-    injectSaga('appSaga', appSaga);
+    injectSaga('appSaga', appSaga());
 }

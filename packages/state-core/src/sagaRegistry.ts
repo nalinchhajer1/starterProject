@@ -14,20 +14,16 @@ const buildRootSaga = () => {
     return rootSaga;
 };
 
-let currentRootSaga = buildRootSaga();
-
 export const sagaRegistry = {
     register(key: string, saga: Saga) {
         if (!sagaEntries[key]) {
             sagaEntries[key] = { key, saga };
-            currentRootSaga = buildRootSaga();
         }
     },
     getRootSaga() {
-        return currentRootSaga;
+        return buildRootSaga();
     },
     unregister(key: string) {
         delete sagaEntries[key];
-        currentRootSaga = buildRootSaga();
     }
 };

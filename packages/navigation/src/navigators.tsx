@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import * as React from 'react';
+import { Component } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { connect } from 'react-redux';
 import { RootStackParamList } from './types';
@@ -14,12 +15,10 @@ interface Props {
 }
 
 class RootStackScreenComponent extends Component<Props> {
-    constructor(props: Props) {
-        super(props);
-        props.onAppInitialize();
-    }
-
     componentDidMount() {
+        // Dispatch app initialization after component is mounted and store is ready
+        this.props.onAppInitialize();
+
         if (!isWeb()) {
             // SplashScreen.hide() - Add your splash screen logic here
         }

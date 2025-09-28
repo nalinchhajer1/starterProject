@@ -9,7 +9,7 @@ export const PageOneView = () => {
     const numberOfTimeAppOpened = useAppSelector(getNumberOfTimeAppOpenedFromState);
 
     // Format the localized string with parameters
-    const counterText = Strings.formatString(Strings.APP_OPENED_COUNTER, [numberOfTimeAppOpened, numberOfTimeAppOpened !== 1 ? 's' : '']);
+    const counterText = Strings.formatString(Strings.APP_OPENED_COUNTER, numberOfTimeAppOpened, numberOfTimeAppOpened !== 1 ? 's' : '');
 
     return (
         <View
