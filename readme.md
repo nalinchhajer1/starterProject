@@ -481,12 +481,38 @@ pnpm nx run-many --target=build --all
 pnpm nx run-many --target=lint --all
 ```
 
+## 🏗️ Feature Development
+
+This project uses a **feature-based architecture** with centralized state management and persistence. Each feature is self-contained and automatically integrated into the application.
+
+### Quick Start for Feature Developers
+
+1. **Create Feature Structure**: Follow the pattern in `packages/features/feature-app/`
+2. **Register Feature**: Add to `packages/features-registry/src/index.ts`
+3. **Configure Persistence**: Update `packages/state-core/src/persistConfiguration.ts`
+4. **Test Integration**: Verify your feature works across platforms
+
+### Documentation
+
+- **Feature Development Guide**: See `packages/features-registry/README.md` for complete feature development instructions
+- **State Management Guide**: See `packages/state-core/README.md` for persistence configuration
+- **Example Features**: Study `feature-app` for a complete implementation example
+
+### Key Concepts
+
+- **Automatic Registration**: Features register themselves with the store
+- **Centralized Persistence**: All persistence rules managed in one place
+- **Type Safety**: Full TypeScript support with proper typing
+- **Cross-Platform**: Features work seamlessly on web and mobile
+
 ## 📚 Documentation
 
 - **Setup Guide**: See `documents/SETUP_GUIDE.md` for getting started with your new project
 - **Customization Guide**: See `documents/CUSTOMIZATION_GUIDE.md` for detailed customization instructions
 - **Template Overview**: See `documents/TEMPLATE_README.md` for comprehensive template information
 - **Architecture**: See `documents/ARCHITECTURE.md` for detailed monorepo architecture
+- **Feature Development**: See `packages/features-registry/README.md` for feature development guide
+- **State Management**: See `packages/state-core/README.md` for persistence configuration
 - **Solito**: [Cross-platform React Native + Next.js](https://solito.dev/)
 - **Expo**: [Mobile development documentation](https://docs.expo.dev/)
 - **Next.js**: [Web development documentation](https://nextjs.org/docs)
