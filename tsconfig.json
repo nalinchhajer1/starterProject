@@ -5,15 +5,17 @@
         "skipLibCheck": true,
         "paths": {
             "app/*": ["packages/app/*"],
-            "features/*": ["packages/features/*"],
-            "firebase-config/*": ["packages/firebase/*"],
+            "navigation/*": ["packages/navigation/*"],
+            "navigation-types/*": ["packages/navigation-types/*"],
+            "navigation-ports/*": ["packages/navigation-ports/*"],
+            "features-registry/*": ["packages/features-registry/*"],
+            "state-core/*": ["packages/state-core/*"],
+            "ui/*": ["packages/ui/*"],
+            "utils/*": ["packages/utils/*"],
             "native/*": ["packages/native/*"],
             "native-library/*": ["packages/native-library/*"],
-            "navigation/*": ["packages/navigation/*"],
-            "state/*": ["packages/state/*"],
-            "types": ["packages/types"],
-            "ui/*": ["packages/ui/*"],
-            "utils/*": ["packages/utils/*"]
+            "firebase/*": ["packages/firebase/*"],
+            "features/*": ["packages/features/*"]
         },
         "baseUrl": ".",
         "jsx": "react-jsx"

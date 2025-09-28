@@ -1,0 +1,13 @@
+{
+    "name": "features-registry",
+    "version": "0.0.0",
+    "dependencies": {
+        "features": "workspace:*",
+        "state-core": "workspace:*",
+        "navigation": "workspace:*"
+    },
+    "peerDependencies": {
+        "react": "*"
+    },
+    "sideEffects": false
+}

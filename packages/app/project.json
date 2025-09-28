@@ -30,5 +30,5 @@
             }
         }
     },
-    "tags": ["type:app", "scope:shared"]
+    "tags": ["layer:app", "scope:shared"]
 }

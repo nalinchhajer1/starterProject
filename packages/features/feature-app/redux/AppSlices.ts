@@ -21,6 +21,7 @@ export interface AppState {
     dontAskForLocationOnLaunch: boolean | null;
     adIndex: number | null;
     savedLocation: any | null;
+    numberOfTimeAppOpened: number;
 }
 
 const initialState: AppState = {
@@ -29,7 +30,8 @@ const initialState: AppState = {
     latestVersion: null,
     dontAskForLocationOnLaunch: null,
     adIndex: null,
-    savedLocation: null
+    savedLocation: null,
+    numberOfTimeAppOpened: 0
 };
 
 const appSlice = createSlice({
@@ -56,6 +58,9 @@ const appSlice = createSlice({
             })
             .addCase(APP_TYPE.CHANGE_LOCATION_ACTION as any, (state, action: any) => {
                 state.savedLocation = action.payload;
+            })
+            .addCase(APP_TYPE.INCREMENT_APP_OPEN_COUNTER as any, (state) => {
+                state.numberOfTimeAppOpened += 1;
             });
     }
 });

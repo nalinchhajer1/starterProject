@@ -1,11 +1,11 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useMemo } from 'react';
 
 // Tab Navigation Implementation
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NAVIGATION_VIEW_ID, TAB_ICON, FONT_ICON } from './constants';
 import { NAVIGATION_STYLE } from './styles';
 import FontIcon from 'ui/src/FontIcon';
-import Strings, { LanguageContext } from 'utils/src/language';
+import Strings from 'utils/src/language';
 import { COLOR } from 'utils/src/colors';
 import { fontSize } from 'utils/src/font';
 import { PageOneView } from 'features/feature-pageone/View/PageOneView';
@@ -40,11 +40,10 @@ function createOptions(title: string, headerShown = false) {
 }
 
 export const TabNavigation = () => {
-    const language = useContext(LanguageContext);
     const [oneOption, twoOption, otherOption] = useMemo(() => {
         // Force re-computation when language changes by accessing Strings
         return [createOptions(Strings.ONE, false), createOptions(Strings.TWO, false), createOptions(Strings.OTHER, true)];
-    }, [language]);
+    }, []);
 
     return (
         <Tab.Navigator screenOptions={TabNavigationConfig} initialRouteName={NAVIGATION_VIEW_ID.PAGE_ONE_VIEW}>

@@ -23,13 +23,17 @@
         "baseUrl": ".",
         "paths": {
             "app/*": ["../../packages/app/*"],
-            "features/*": ["../../packages/features/*"],
             "navigation/*": ["../../packages/navigation/*"],
-            "state/*": ["../../packages/state/*"],
+            "navigation-types/*": ["../../packages/navigation-types/*"],
+            "navigation-ports/*": ["../../packages/navigation-ports/*"],
+            "features-registry/*": ["../../packages/features-registry/*"],
+            "state-core/*": ["../../packages/state-core/*"],
             "ui/*": ["../../packages/ui/*"],
             "utils/*": ["../../packages/utils/*"],
-            "firebase-config/*": ["../../packages/firebase/*"],
-            "types": ["../../packages/types"]
+            "native/*": ["../../packages/native/*"],
+            "native-library/*": ["../../packages/native-library/*"],
+            "firebase/*": ["../../packages/firebase/*"],
+            "features/*": ["../../packages/features/*"]
         }
     },
     "include": ["next-env.d.ts", "app-env.d.ts", "**/*.ts", "**/*.tsx", "next.config.js", ".next/types/**/*.ts"],

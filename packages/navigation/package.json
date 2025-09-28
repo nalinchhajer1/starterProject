@@ -9,7 +9,6 @@
         "@react-navigation/native-stack": "7.3.26",
         "@react-navigation/stack": "7.4.8",
         "features": "workspace:*",
-        "state": "workspace:*",
         "ui": "workspace:*",
         "utils": "workspace:*"
     },

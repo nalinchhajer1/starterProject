@@ -1,24 +1,17 @@
-import React, { Component } from 'react';
+import * as React from 'react';
+import { Component } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { connect } from 'react-redux';
 import { RootStackParamList } from './types';
 import { NAVIGATION_STYLE } from './styles';
 import { TabNavigation } from './screens';
 import { isWeb } from 'utils/src/platform';
-import { onAppInitialize } from 'features/feature-app/redux/AppActions';
 
 const RootStack = createStackNavigator<RootStackParamList>();
 
-interface Props {
-    onAppInitialize: () => void;
-}
+interface Props {}
 
 class RootStackScreenComponent extends Component<Props> {
-    constructor(props: Props) {
-        super(props);
-        props.onAppInitialize();
-    }
-
     componentDidMount() {
         if (!isWeb()) {
             // SplashScreen.hide() - Add your splash screen logic here
@@ -36,8 +29,6 @@ class RootStackScreenComponent extends Component<Props> {
 
 const mapStateToProps = () => ({});
 
-const mapDispatchToProps = {
-    onAppInitialize: onAppInitialize
-};
+const mapDispatchToProps = {};
 
 export const RootStackScreen = connect(mapStateToProps, mapDispatchToProps)(RootStackScreenComponent);

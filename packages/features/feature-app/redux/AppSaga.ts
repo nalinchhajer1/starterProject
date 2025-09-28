@@ -1,8 +1,9 @@
-import { all, takeLatest } from 'redux-saga/effects';
+import { all, takeLatest, put } from 'redux-saga/effects';
 import { APP_TYPE } from './AppTypes';
 
 function* onAppInitialize() {
-    // TODO: Implement app initialization
+    // Increment the app open counter
+    yield put({ type: APP_TYPE.INCREMENT_APP_OPEN_COUNTER });
 }
 
 export function* appSaga() {
