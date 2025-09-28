@@ -24,11 +24,34 @@
 
 - **Navigation**: React Navigation v7 with type-safe navigation
 - **State Management**: Redux Toolkit slices with Redux Saga for side effects
+- **Centralized Architecture**: Features register themselves with the store automatically
+- **Persistence**: Centralized persistence configuration in `state-core`
 - **Forms**: Controlled components with proper validation
 - **Modals**: Modal presentation for settings and location selection
 - **Platform Detection**: Use `utils/src/platform` for platform-specific code
 - **Localization**: Use `utils/src/language` for multi-language support
 - **Imports**: Use direct imports from component files (no index.ts files for View components)
+
+### Centralized Architecture
+
+#### **Feature Registration**
+- Features register themselves via `register.ts` files
+- All features are registered in `packages/features-registry/src/index.ts`
+- Persistence is configured centrally in `packages/state-core/src/persistConfiguration.ts`
+
+#### **State Management Flow**
+1. **Feature Development**: Create Redux slices, sagas, and selectors
+2. **Registration**: Create `register.ts` to register reducer and saga
+3. **Registry**: Add feature to `features-registry/src/index.ts`
+4. **Persistence**: Configure in `state-core/src/persistConfiguration.ts`
+5. **Integration**: Feature is automatically available across the app
+
+#### **Benefits**
+- **Automatic Setup**: Features register themselves without manual store configuration
+- **Centralized Persistence**: All persistence rules in one place
+- **Type Safety**: Full TypeScript support with proper typing
+- **Performance**: Batch registration prevents unnecessary rebuilds
+- **Maintainability**: Clear separation of concerns and easy feature management
 
 ## 📦 Adding New Packages/Modules
 
