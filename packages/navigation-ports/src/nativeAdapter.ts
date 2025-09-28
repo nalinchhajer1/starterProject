@@ -1,5 +1,5 @@
 import { createNavigationContainerRef, CommonActions } from '@react-navigation/native';
-import type { RouteParamMap, NavOps } from 'navigation-types/params';
+import type { RouteParamMap, NavOps } from 'navigation-types/src/params';
 
 export const createNativeNav = <M extends RouteParamMap>() => {
     const ref = createNavigationContainerRef<M>();

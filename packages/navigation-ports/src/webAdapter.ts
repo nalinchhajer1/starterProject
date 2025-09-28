@@ -1,5 +1,5 @@
 import type { Router } from 'next/router';
-import type { RouteParamMap, NavOps } from 'navigation-types/params';
+import type { RouteParamMap, NavOps } from 'navigation-types/src/params';
 
 export type CreateHref<M extends RouteParamMap> = <K extends keyof M & string>(r: K, p?: M[K]) => string;
 

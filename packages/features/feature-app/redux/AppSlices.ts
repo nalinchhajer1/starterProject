@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { APP_TYPE } from './AppTypes';
-import type { AppState } from 'state-core/appStateTypes';
+import type { AppState } from 'state-core/src/appStateTypes';
 
 // Placeholder for DEFAULT_LANGUAGE - you'll replace this when copying your constants
 const DEFAULT_LANGUAGE = 'en';
