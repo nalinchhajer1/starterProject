@@ -19,8 +19,8 @@ export const createStore = () => {
 
     // Set up dynamic reducer registration
     const originalReducerRegister = reducerRegistry.register;
-    (reducerRegistry as any).register = (key: string, reducer: any, meta?: any) => {
-        originalReducerRegister.call(reducerRegistry, key, reducer, meta);
+    (reducerRegistry as any).register = (key: string, reducer: any) => {
+        originalReducerRegister.call(reducerRegistry, key, reducer);
         store.replaceReducer(reducerRegistry.getReducer());
     };
 

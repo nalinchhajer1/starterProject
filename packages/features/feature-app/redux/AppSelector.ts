@@ -27,3 +27,7 @@ export const getLatestVersionFromState = (state: RootState) => {
 export const getDontAskForLocationFromState = (state: RootState) => {
     return state.appState.dontAskForLocationOnLaunch;
 };
+
+export const getNumberOfTimeAppOpenedFromState = (state: RootState) => {
+    return state.appState.numberOfTimeAppOpened;
+};

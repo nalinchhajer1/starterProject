@@ -4,5 +4,6 @@
     "TWO": "TWO",
     "SETTINGS": "SETTINGS",
     "THREE": "THREE",
-    "OTHER": "OTHER"
+    "OTHER": "OTHER",
+    "APP_OPENED_COUNTER": "This app has been opened {0} time{1}"
 }

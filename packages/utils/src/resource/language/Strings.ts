@@ -8,4 +8,5 @@ export interface IStrings extends LocalizedStringsMethods {
     SETTINGS: string;
     THREE: string;
     OTHER: string;
+    APP_OPENED_COUNTER: string;
 }

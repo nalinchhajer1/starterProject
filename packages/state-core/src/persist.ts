@@ -1,19 +1,10 @@
 import { combineReducers, Reducer } from '@reduxjs/toolkit';
-import { persistReducer, PersistConfig, createMigrate } from 'redux-persist';
-import { migrations } from './migrations';
-import storage from './Storage';
+import { persistReducer, PersistConfig } from 'redux-persist';
+import { rootPersistConfig, getPersistConfig } from './persistConfiguration';
 
 type Entry = { key: string; reducer: Reducer<any>; persist?: PersistConfig<any> };
 const asyncEntries: Record<string, Entry> = {};
 const coreReducers: Record<string, Reducer<any>> = {};
-
-const rootPersistConfig: PersistConfig<any> = {
-    key: 'root',
-    storage,
-    version: 2,
-    whitelist: ['appState'], // fill with small, stable keys if needed
-    migrate: createMigrate(migrations, { debug: false })
-};
 
 const buildRoot = () => {
     const wrapped: Record<string, Reducer<any>> = {};
@@ -34,9 +25,11 @@ const buildRoot = () => {
 let currentReducer = buildRoot();
 
 export const reducerRegistry = {
-    register(key: string, reducer: Reducer<any>, meta?: { persist?: PersistConfig<any> }) {
+    register(key: string, reducer: Reducer<any>) {
         if (!asyncEntries[key]) {
-            asyncEntries[key] = { key, reducer, persist: meta?.persist };
+            // Automatically determine persist config based on key
+            const persistConfig = getPersistConfig(key);
+            asyncEntries[key] = { key, reducer, persist: persistConfig };
             currentReducer = buildRoot();
         }
     },
