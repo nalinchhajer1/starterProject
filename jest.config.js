@@ -2,7 +2,7 @@ module.exports = {
     preset: 'react-native',
     setupFilesAfterEnv: ['<rootDir>/jest/setup.js'],
     transformIgnorePatterns: [
-        'node_modules/(?!(@react-native|react-native|@react-navigation|react-native-gesture-handler|react-native-reanimated|react-native-worklets|react-redux|immer|react-native-blob-util|redux-persist-filesystem-storage|redux-persist)/)'
+        'node_modules/(?!(@react-native|react-native|@react-navigation|react-native-gesture-handler|react-native-reanimated|react-native-worklets|react-redux|immer|react-native-blob-util|redux-persist-filesystem-storage|redux-persist|react-localization)/)'
     ],
     resolver: '@nx/jest/plugins/resolver',
     moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'mjs'],

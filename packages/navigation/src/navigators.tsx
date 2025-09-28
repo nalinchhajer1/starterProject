@@ -6,19 +6,13 @@ import { RootStackParamList } from './types';
 import { NAVIGATION_STYLE } from './styles';
 import { TabNavigation } from './screens';
 import { isWeb } from 'utils/src/platform';
-import { onAppInitialize } from 'features/feature-app/redux/AppActions';
 
 const RootStack = createStackNavigator<RootStackParamList>();
 
-interface Props {
-    onAppInitialize: () => void;
-}
+interface Props {}
 
 class RootStackScreenComponent extends Component<Props> {
     componentDidMount() {
-        // Dispatch app initialization after component is mounted and store is ready
-        this.props.onAppInitialize();
-
         if (!isWeb()) {
             // SplashScreen.hide() - Add your splash screen logic here
         }
@@ -35,8 +29,6 @@ class RootStackScreenComponent extends Component<Props> {
 
 const mapStateToProps = () => ({});
 
-const mapDispatchToProps = {
-    onAppInitialize: onAppInitialize
-};
+const mapDispatchToProps = {};
 
 export const RootStackScreen = connect(mapStateToProps, mapDispatchToProps)(RootStackScreenComponent);

@@ -3,7 +3,7 @@
     "version": "0.0.0",
     "dependencies": {
         "moment-timezone": "0.5.48",
-        "react-localization": "1.0.19"
+        "react-localization": "2.0.6"
     },
     "peerDependencies": {
         "react": "*",
