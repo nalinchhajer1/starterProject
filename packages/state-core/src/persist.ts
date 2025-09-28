@@ -22,18 +22,18 @@ const buildRoot = () => {
     return persistReducer(rootPersistConfig, root);
 };
 
-let currentReducer = buildRoot();
-
 export const reducerRegistry = {
     register(key: string, reducer: Reducer<any>) {
         if (!asyncEntries[key]) {
             // Automatically determine persist config based on key
             const persistConfig = getPersistConfig(key);
             asyncEntries[key] = { key, reducer, persist: persistConfig };
-            currentReducer = buildRoot();
         }
     },
+    buildRoot() {
+        return buildRoot();
+    },
     getReducer() {
-        return currentReducer;
+        return buildRoot();
     }
 };

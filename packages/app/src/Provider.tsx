@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { Provider as ReduxProvider, useSelector } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { createStore } from 'state-core/src/store';
@@ -8,8 +8,7 @@ import { CodePushManager, FirebasePushNotificationManager } from 'utils/src/mana
 import { DEFAULT_LANGUAGE, LanguageChangeManager, LanguageContext } from 'utils/src/language';
 
 // App supplies concrete route map type M (import your AppRoutes here if defined)
-const { store, persistor, injectReducer, injectSaga } = createStore();
-registerAppStates(injectReducer, injectSaga);
+const { store, persistor } = createStore(registerAppStates);
 
 function AppProviders({ children }: { children: React.ReactNode }) {
     const language = useSelector(selectors.getLanguageFromState);

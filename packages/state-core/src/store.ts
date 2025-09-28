@@ -4,11 +4,18 @@ import createSagaMiddleware from 'redux-saga';
 import { reducerRegistry } from './persist';
 import { sagaRegistry } from './sagaRegistry';
 
-export const createStore = () => {
+export const createStore = (
+    registerFeatures?: (injectReducer: (key: string, reducer: any) => void, injectSaga: (key: string, saga: any) => void) => void
+) => {
     const sagaMiddleware = createSagaMiddleware();
 
+    // If registration function is provided, register all features first
+    if (registerFeatures) {
+        registerFeatures(reducerRegistry.register, sagaRegistry.register);
+    }
+
     const store = configureStore({
-        reducer: reducerRegistry.getReducer(),
+        reducer: reducerRegistry.buildRoot(),
         middleware: (getDefaultMiddleware) =>
             getDefaultMiddleware({
                 serializableCheck: {
@@ -17,29 +24,11 @@ export const createStore = () => {
             }).concat(sagaMiddleware)
     });
 
-    // Set up dynamic reducer registration
-    const originalReducerRegister = reducerRegistry.register;
-    (reducerRegistry as any).register = (key: string, reducer: any) => {
-        originalReducerRegister.call(reducerRegistry, key, reducer);
-        store.replaceReducer(reducerRegistry.getReducer());
-    };
-
-    // Set up dynamic saga registration
-    const originalSagaRegister = sagaRegistry.register;
-    (sagaRegistry as any).register = (key: string, saga: any) => {
-        originalSagaRegister.call(sagaRegistry, key, saga);
-        // Restart saga middleware with new root saga
-        sagaMiddleware.run(sagaRegistry.getRootSaga());
-    };
-
     const persistor = persistStore(store);
-    const injectReducer = reducerRegistry.register;
-    const injectSaga = sagaRegistry.register;
-
     // Start the initial root saga
     sagaMiddleware.run(sagaRegistry.getRootSaga());
 
-    return { store, persistor, injectReducer, injectSaga };
+    return { store, persistor };
 };
 
 export type AppStore = ReturnType<typeof createStore>['store'];
