@@ -56,34 +56,16 @@ module.exports = defineConfig([
                     enforceBuildableLibDependency: true,
                     allow: [],
                     depConstraints: [
-                        {
-                            sourceTag: 'type:apps',
-                            onlyDependOnLibsWithTags: ['type:navigation', 'type:feature', 'type:ui', 'type:state', 'type:util', 'type:app']
-                        },
-                        {
-                            sourceTag: 'type:app',
-                            onlyDependOnLibsWithTags: ['type:navigation', 'type:feature', 'type:ui', 'type:state', 'type:util']
-                        },
-                        {
-                            sourceTag: 'type:navigation',
-                            onlyDependOnLibsWithTags: ['type:feature', 'type:ui', 'type:state', 'type:util']
-                        },
-                        {
-                            sourceTag: 'type:feature',
-                            onlyDependOnLibsWithTags: ['type:ui','type:util', 'type:lib']
-                        },
-                        {
-                            sourceTag: 'type:ui',
-                            onlyDependOnLibsWithTags: ['type:util']
-                        },
-                        {
-                            sourceTag: 'type:state',
-                            onlyDependOnLibsWithTags: ['type:util', 'type:feature']
-                        },
-                        {
-                            sourceTag: 'type:util',
-                            onlyDependOnLibsWithTags: []
-                        }
+                        { "sourceTag": "layer:app", "onlyDependOnLibsWithTags": ["layer:app","layer:composition","layer:navigation","layer:state","layer:ui","layer:utils","layer:native","layer:firebase"] },
+                        { "sourceTag": "layer:composition", "onlyDependOnLibsWithTags": ["layer:feature","layer:state","layer:ui","layer:utils","layer:native","layer:firebase"] },
+                        { "sourceTag": "layer:navigation", "onlyDependOnLibsWithTags": ["layer:feature","layer:composition","layer:ui","layer:utils"] },
+                        { "sourceTag": "layer:feature", "onlyDependOnLibsWithTags": ["layer:state","layer:ui","layer:utils","layer:native","layer:firebase"] },
+                        { "sourceTag": "layer:state", "onlyDependOnLibsWithTags": ["layer:ui","layer:utils","layer:native","layer:firebase"] },
+                        { "sourceTag": "layer:native", "onlyDependOnLibsWithTags": ["layer:native-library","layer:ui","layer:utils"] },
+                        { "sourceTag": "layer:native-library", "onlyDependOnLibsWithTags": [] },
+                        { "sourceTag": "layer:firebase", "onlyDependOnLibsWithTags": ["layer:ui","layer:utils"] },
+                        { "sourceTag": "layer:ui", "onlyDependOnLibsWithTags": ["layer:utils"] },
+                        { "sourceTag": "layer:utils", "onlyDependOnLibsWithTags": [] }
                     ]
                 }
             ]

@@ -30,5 +30,5 @@
             }
         }
     },
-    "tags": ["type:lib", "scope:shared"]
+    "tags": ["layer:firebase", "scope:shared"]
 }

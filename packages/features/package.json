@@ -1,9 +1,7 @@
 {
     "name": "features",
     "version": "0.0.0",
-    "dependencies": {
-        "types": "workspace:*"
-    },
+    "dependencies": {},
     "devDependencies": {
         "@types/react": "19.1.13"
     },
